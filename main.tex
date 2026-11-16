@@ -1,0 +1,151 @@
+\documentclass{Configuracoes}  % Usa a classe personalizada
+\usepackage[backend=biber,style=abnt,language=brazil]{biblatex}
+\addbibresource{referencias.bib}
+\usepackage[brazilian]{babel}
+% Remove os títulos automáticos do sumário e das listas (os títulos em caixa alta já são
+% escritos pela classe; sem isto, apareciam duas vezes)
+\newcommand{\removerTitulosAutomaticos}{%
+    \renewcommand{\contentsname}{}%
+    \renewcommand{\listfigurename}{}%
+    \renewcommand{\listtablename}{}%
+}
+\addto\captionsbrazilian{\removerTitulosAutomaticos}
+\AtBeginDocument{\removerTitulosAutomaticos}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{colortbl}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{array}
+\usepackage{xltabular}
+\usepackage{booktabs}
+\usepackage{placeins}
+\usepackage{float}
+\newcommand{\fonte}[1]{\vspace{2pt}\raggedright\footnotesize\textit{Fonte: #1}}
+\usepackage{newfloat}
+
+\DeclareFloatingEnvironment[
+    fileext=loq,
+    listname={},
+    name=Quadro,
+    placement=htbp,
+    within=none
+]{quadro}
+
+\usepackage{caption}
+
+\captionsetup[figure]{
+    labelsep=endash
+}
+
+\begin{document}
+
+% === CAPA (não conta e não numera)
+\pagenumbering{gobble}
+\capa
+\clearpage
+
+% === FOLHA DE ROSTO (conta mas não numera)
+\pagenumbering{roman}
+\thispagestyle{empty}
+\folhaRosto
+\clearpage
+
+% === FICHA CATALOGRÁFICA (não conta nem numera)
+%\pagenumbering{gobble}
+%\fichaCatalograficaMacro
+%\clearpage
+
+% === PRÉ-TEXTUAIS (conta mas não numera)
+\pagenumbering{roman}
+\pagestyle{empty}
+
+%\errata
+%\clearpage
+\folhaAprovacao
+\clearpage
+\dedicatoria
+\clearpage
+\input{agradecimentos}
+\clearpage
+\Epigrafe
+\clearpage
+\input{resumo}
+\clearpage
+
+% === Abstract: usa arábico (para aparecer certo no sumário), mas não exibe o número
+\clearpage
+\thispagestyle{empty}
+\input{abstract}
+\clearpage
+
+% === Restaura ocultação até sumário
+\pagestyle{empty}
+
+\listaIlustracoes
+
+\clearpage
+\listaTabelas
+\clearpage
+\listaQuadros
+\clearpage
+\listaAbreviaturas
+\clearpage
+%\listaSimbolos
+%\clearpage
+
+% === SUMÁRIO
+% === Sumário com numeração oculta
+% === SUMÁRIO
+% === SUMÁRIO
+\clearpage
+\sectionCentralizada{SUMÁRIO}
+
+\vspace{-0.7cm}
+\Sumario
+\clearpage
+
+% === Agora armazena a página do sumário
+\newcounter{paginasPreTextuais}
+\setcounter{paginasPreTextuais}{\value{page}}  % Ex: 13
+
+% === Ativa a numeração arábica visível a partir da introdução
+\pagenumbering{arabic}
+\setcounter{page}{\value{paginasPreTextuais}}  % Ex: 13
+\stepcounter{page}  % Agora página 14
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\fontsize{10pt}{10pt}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\input{introducao}
+
+\clearpage
+\input{objetivos}
+\clearpage
+\input{referencial}
+\clearpage
+\input{metodo}
+\clearpage
+\input{resultados}
+\clearpage
+\input{conclusao}
+\clearpage
+
+% === REFERÊNCIAS
+\sectionCentralizadaComSumario{REFERÊNCIAS}
+\printbibliography[heading=none]
+\clearpage
+
+% === ELEMENTOS PÓS-TEXTUAIS
+\glossario
+\clearpage
+%\apendice
+%\clearpage
+%\anexos
+%\clearpage
+%\indice
+
+\end{document}

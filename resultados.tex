@@ -1,0 +1,453 @@
+\section{{\fontsize{12pt}{14pt}\selectfont RESULTADOS}}
+\vspace{-0.3cm}
+
+    
+\novoBlocoTexto{
+    Os resultados são apresentados em duas partes. A seção~\ref{sec:secao-5-1} apresenta a plataforma desenvolvida e o atendimento aos requisitos levantados na seção~\ref{sec:levantamento-requisitos}, e as seções~\ref{sec:secao-5-2} a~\ref{sec:discussao-limitacoes} apresentam a execução e os resultados da avaliação experimental descrita na seção~\ref{sec:avaliacao-experimental}.
+}
+
+\subsection{{\fontsize{12pt}{14pt}\selectfont A plataforma desenvolvida}}
+\label{sec:secao-5-1}
+\novoBlocoTexto{
+    A plataforma foi implementada como uma aplicação web, acessível por meio de navegadores (RNF08). Para representar o processo de utilização da plataforma, foi empregada a notação \textit{Business Process Model and Notation} (BPMN), utilizada para modelar e representar graficamente processos. O fluxo foi organizado em três diagramas BPMN: preparação da disciplina (Figura~\ref{fig:bpmn-preparacao}), envio e processamento das dúvidas (Figura~\ref{fig:bpmn-duvidas}) e consulta ao painel docente (Figura~\ref{fig:bpmn-painel}). Os diagramas apresentam as principais atividades e interações entre professor, aluno e sistema.
+}
+\fluxobpmnprincipal
+\novoBlocoTexto{
+    As Figuras~\ref{fig:tela-acesso} a~\ref{fig:tela-topico-trechos} apresentam suas telas na ordem do fluxo descrito no capítulo~\ref{sec:metodo}: o acesso à plataforma, a disciplina preparada pelo professor, o envio de uma dúvida pelo aluno e a consulta do professor ao painel. O Quadro~\ref{quad:atendimento-requisitos}, ao final desta seção, relaciona cada requisito dos Quadros~\ref{quad:requisitos-funcionais} e~\ref{quad:requisitos-nao-funcionais} à figura que comprova o seu atendimento.
+}
+
+\novoBlocoTexto{
+    O cadastro e a autenticação são os mesmos para professores e alunos (Figura~\ref{fig:tela-acesso}). 
+}
+\telaacesso
+
+\novoBlocoTexto{
+    O papel de cada usuário é definido na disciplina: o professor a cadastra, e a plataforma gera os códigos de convite com os quais alunos e outros professores ingressam nela (Figura~\ref{fig:tela-disciplina}). 
+
+\teladisciplina
+
+    Ao acessar a página de tópicos e materiais da disciplina (Figura~\ref{fig:tela-topico}) o professor envia o plano de ensino em PDF, a LLM identifica os tópicos e gera uma breve descrição de cada um, que o professor pode editar antes de salvar. Em seguida, o professor associa a cada tópico os materiais em PDF, dos quais a plataforma extrai o texto, divide-o em fragmentos e gera os \textit{embeddings} de cada fragmento. A descrição extraída do plano aparece no início da página de cada tópico, como em Pilhas (Figura~\ref{fig:tela-topico-resumos}), e os arquivos associados aparecem como origem dos slides recuperados (Figura~\ref{fig:tela-topico-trechos}).
+}
+
+\telatopico
+
+\novoBlocoTexto{
+    O aluno envia suas dúvidas pelo chat e recebe a resposta em português (RNF06), elaborada pela LLM com base nos fragmentos recuperados do material e acompanhada da fonte e do slide de onde veio cada informação, como “[Fonte 2, slide 11]” (Figura~\ref{fig:tela-chat}). A classificação e o resumo da dúvida são gerados no mesmo processamento e não aparecem para o aluno. Abaixo da caixa de mensagem, o chat informa ao aluno que o professor poderá visualizar resumos das dúvidas enviadas, sem vínculo à identificação do estudante (RNF09), como mostra a Figura~\ref{fig:tela-chat}.
+}
+
+\telachat
+
+\novoBlocoTexto{
+    No painel, o professor vê o número de disciplinas, o total de dúvidas classificadas, o número de tópicos com dúvidas, a lista dos tópicos com mais dúvidas e um gráfico com a distribuição das dúvidas entre os tópicos (Figura~\ref{fig:tela-painel}). A Figura~\ref{fig:tela-painel} mostra o painel ao final do experimento, com as 1.416 perguntas classificadas nos 12 tópicos da disciplina.
+}
+
+\telapainel
+
+\novoBlocoTexto{
+    Ao abrir um tópico, o professor vê a sua descrição, o número de perguntas registradas e, para cada dúvida, um título e um resumo individual, escritos em terceira pessoa, a pergunta original e sem a identificação do aluno (RNF01), como mostra a Figura~\ref{fig:tela-topico-resumos} para o tópico Pilhas. Na mesma página, uma segunda aba apresenta os slides mais recuperados pela busca nas dúvidas do tópico, com o arquivo de origem de cada um (Figura~\ref{fig:tela-topico-trechos}), o que indica ao professor as partes do material mais recuperadas para a resolução das dúvidas.
+}
+
+\telatopicoresumos
+\telatopicotrechos
+
+\novoBlocoTexto{
+    O controle de acesso é aplicado no próprio banco de dados, por políticas de segurança em nível de linha (RLS) que restringem cada conversa e as suas mensagens ao aluno que as criou (RNF02 e RNF03). Além disso, cada rota da aplicação confere se o usuário participa da disciplina, e as instruções enviadas à LLM tratam a dúvida e os fragmentos como dados, com a orientação de ignorar comandos contidos neles.
+}
+
+\novoBlocoTexto{
+    O Quadro \ref{quad:atendimento-requisitos} resume o atendimento aos requisitos. Todos foram atendidos. O aviso do RNF09 foi incluído na tela do chat depois do experimento, o que não altera os resultados, pois as perguntas foram enviadas por automação (seção~\ref{sec:execucao-classificacao}).
+}
+
+\begin{quadro}[H]\captionsetup{name=Quadro}
+\centering
+\caption{Atendimento aos Requisitos}
+\label{quad:atendimento-requisitos}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+
+\begin{tabularx}{\textwidth}{
+|>{\raggedright\arraybackslash}X
+|>{\raggedright\arraybackslash}X|
+}
+\hline
+
+\rowcolor[HTML]{C0C0C0}
+\multicolumn{1}{|c|}{\textbf{Requisito}} &
+\multicolumn{1}{c|}{\textbf{Evidência}} \\ \hline
+
+RF01 -- Cadastro de disciplinas &
+Figuras~\ref{fig:tela-disciplina} e~\ref{fig:tela-painel} \\ \hline
+
+RF02 -- Convite de alunos por código de acesso &
+Figura~\ref{fig:tela-disciplina} \\ \hline
+
+RF03 -- Envio do plano de ensino e extração dos tópicos &
+Figura~\ref{fig:tela-topico-resumos} e Seção~\ref{sec:secao-5-2} \\ \hline
+
+RF04 -- Materiais em PDF associados aos tópicos &
+Figura~\ref{fig:tela-topico-trechos} e Seção~\ref{sec:secao-5-2} \\ \hline
+
+RF05 -- Extração do texto dos materiais &
+Seção~\ref{sec:secao-5-2} \\ \hline
+
+RF06 -- Divisão do texto em fragmentos &
+Seção~\ref{sec:secao-5-2} \\ \hline
+
+RF07 -- Geração dos \textit{embeddings} de cada fragmento &
+Seção~\ref{sec:secao-5-2} \\ \hline
+
+RF08 -- Envio de dúvidas pelo \textit{chat} &
+Figura~\ref{fig:tela-chat} \\ \hline
+
+RF09 -- Recuperação dos cinco fragmentos &
+Figuras~\ref{fig:tela-chat} e~\ref{fig:tela-topico-trechos} \\ \hline
+
+RF10 -- Resposta com base nos fragmentos &
+Figura~\ref{fig:tela-chat} \\ \hline
+
+RF11 -- Classificação em um dos tópicos &
+Figura~\ref{fig:tela-painel} e Seção~\ref{sec:secao-5-3} \\ \hline
+
+RF12 -- Resumo individual de cada dúvida &
+Figura~\ref{fig:tela-topico-resumos} \\ \hline
+
+RF13 -- Armazenamento da pergunta, do tópico e do resumo &
+Seção~\ref{sec:secao-5-2} \\ \hline
+
+RF14 -- Painel com quantidades e resumos por tópico &
+Figuras~\ref{fig:tela-painel} e~\ref{fig:tela-topico-resumos} \\ \hline
+
+RNF01 -- Professor sem acesso aos nomes &
+Figura~\ref{fig:tela-topico-resumos} \\ \hline
+
+RNF02 -- Aluno com acesso só às próprias conversas &
+Seção~\ref{sec:secao-5-1} \\ \hline
+
+RNF03 -- Controle de acesso por RLS &
+Seção~\ref{sec:secao-5-1} \\ \hline
+
+RNF04 -- LLM executada localmente &
+Quadro~\ref{quad:configuracao-ambiente-experimental} \\ \hline
+
+RNF05 -- \textit{Embeddings} com suporte ao português &
+Quadro~\ref{quad:configuracao-ambiente-experimental} \\ \hline
+
+RNF06 -- Respostas em português &
+Figura~\ref{fig:tela-chat} \\ \hline
+
+RNF07 -- Vetores no banco, com \textit{pgvector} &
+Quadro~\ref{quad:configuracao-ambiente-experimental} \\ \hline
+
+RNF08 -- Acesso pelo navegador &
+Figuras~\ref{fig:tela-acesso},
+\ref{fig:tela-disciplina},
+\ref{fig:tela-chat},
+\ref{fig:tela-painel},
+\ref{fig:tela-topico-resumos} e~\ref{fig:tela-topico-trechos} \\ \hline
+
+RNF09 -- Aviso ao aluno sobre o acesso às perguntas &
+Figura~\ref{fig:tela-chat}\, \\ \hline
+
+\end{tabularx}
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).} % Legenda de baixo.
+}
+\end{quadro}
+
+\FloatBarrier
+
+\subsection{{\fontsize{12pt}{14pt}\selectfont Execução do experimento}}
+\label{sec:secao-5-2}
+\novoBlocoTexto{
+    Na preparação da disciplina, a plataforma extraiu do plano de ensino os 12 tópicos da Tabela~\ref{tab:distribuicao-de-perguntas-por-topico-no-conjunto-de-referencia}, cada um com a sua descrição, e os 12 arquivos de slides da Tabela~\ref{tab:distribuicao-materiais-por-topico}, com 405 slides no total, foram associados aos respectivos tópicos, divididos em fragmentos e convertidos em embeddings (RF03 a RF07).
+}
+
+\novoBlocoTexto{
+    As 1.416 perguntas traduzidas foram enviadas pelo chat a partir de uma única conta de aluno, criada para o teste; por isso, a página de cada tópico registra um único aluno com dúvidas (Figura \ref{fig:tela-topico-resumos}). Todas as perguntas foram classificadas em um dos 12 tópicos da disciplina, e o painel registrou 1.416 dúvidas classificadas, uma para cada pergunta do conjunto (Figura~\ref{fig:tela-painel}). Para cada pergunta, o banco de dados armazenou a pergunta, o tópico atribuído, o grau de confiança, os fragmentos recuperados e o resumo (RF13).
+}
+
+\novoBlocoTexto{
+    O Quadro \ref{quad:configuracao-ambiente-experimental} apresenta o ambiente de execução. A LLM e o modelo de embeddings foram executados no próprio computador, sem envio das dúvidas a serviços externos de inferência (RNF04), e os vetores foram armazenados no banco de dados da aplicação, com a extensão pgvector (RNF07).
+}
+
+
+
+\begin{quadro}[H]\captionsetup{name=Quadro}
+\centering
+\caption{Configuração do ambiente experimental}
+\label{quad:configuracao-ambiente-experimental}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+
+\begin{tabularx}{\textwidth}{
+|>{\raggedright\arraybackslash}p{3.5cm}
+|>{\raggedright\arraybackslash}X|
+}
+\hline
+
+\rowcolor[HTML]{C0C0C0}
+\multicolumn{1}{|c|}{\textbf{Item}} &
+\multicolumn{1}{c|}{\textbf{Configuração}} \\ \hline
+
+Computador &
+\textit{Notebook} Acer Nitro AN517-54 \\ \hline
+
+Processador &
+Intel Core i7-11800H, de 11ª geração, com 8 núcleos e 16 \textit{threads} \\ \hline
+
+Memória RAM &
+64 GB \\ \hline
+
+Placa de vídeo &
+NVIDIA GeForce RTX 3050 Laptop GPU \\ \hline
+
+Sistema operacional &
+Ubuntu 26.04.1 LTS, 64 bits \\ \hline
+
+LLM &
+Qwen2.5-7B-Instruct, quantizada em \texttt{q4\_k\_m} (formato GGUF), executada pelo \textit{llama.cpp} na placa de vídeo \\ \hline
+
+Temperatura da LLM &
+0,2 \\ \hline
+
+Modelo de \textit{embeddings} &
+\texttt{intfloat/multilingual-e5-base} (768 dimensões), executado no processador por um serviço local em Python, com \textit{FastAPI} e \textit{sentence-transformers} \\ \hline
+
+Banco de dados &
+\textit{Supabase}, em nuvem (\textit{PostgreSQL} com a extensão \textit{pgvector}) \\ \hline
+
+Aplicação &
+\textit{Next.js} 16.3.5, \textit{React} 19.2.8 e \textit{TypeScript} 5 \\ \hline
+
+Envio automatizado &
+\textit{Selenium WebDriver} 4.52.0, pelo \textit{chat} da plataforma no navegador \\ \hline
+
+\end{tabularx}
+
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).} % Legenda de baixo.
+}
+\end{quadro}
+
+\FloatBarrier
+
+\FloatBarrier
+
+\novoBlocoTexto{
+    Ao final da execução, os registros das perguntas foram exportados do banco de dados, com o tópico atribuído pela LLM, e comparados aos tópicos de referência em planilha eletrônica. A planilha com as 1.416 perguntas traduzidas, o tópico de referência e o tópico atribuído pela plataforma está disponível em: \url{https://docs.google.com/spreadsheets/d/12FplYIpg0O_vLE_PhnKJ0lyG4CDuXaGG/edit?usp=sharing}.
+}
+
+\subsection{{\fontsize{12pt}{14pt}\selectfont Desempenho da classificação}}
+\label{sec:secao-5-3}
+\novoBlocoTexto{
+    Das 1.416 perguntas do conjunto de referência, a plataforma atribuiu 1.180 ao mesmo tópico da referência, o que corresponde a uma acurácia de 83,33\%. Esse valor é quatro vezes o parâmetro mínimo definido na seção~\ref{sec:metricas-analise-erros}, de 20,8\%, obtido ao atribuir todas as perguntas ao tópico mais frequente. Todas as perguntas foram classificadas em um dos 12 tópicos da disciplina, e a Tabela~\ref{tab:desempenho-classificacao-topico} apresenta o desempenho em cada um deles.
+}
+
+
+
+\begin{table}[htbp]
+\centering
+\caption{Desempenho da classificação por tópico}
+\label{tab:desempenho-classificacao-topico}
+
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{2pt}
+
+\begin{tabularx}{\textwidth}{
+>{\raggedright\arraybackslash}X
+>{\centering\arraybackslash}p{2.0cm}
+>{\centering\arraybackslash}p{2.5cm}
+>{\centering\arraybackslash}p{1.8cm}
+>{\centering\arraybackslash}p{1.5cm}
+>{\centering\arraybackslash}p{1.8cm}
+>{\centering\arraybackslash}p{1.8cm}
+}
+\hline
+
+\textbf{Tópico} &
+\textbf{Perguntas na referência} &
+\textbf{Atribuídas pela plataforma} &
+\textbf{Acertos} &
+\textbf{Precisão (\%)} &
+\textbf{Revocação (\%)} &
+\textbf{F1 (\%)} \\ \hline
+
+Revisão de Python & 295 & 137 & 135 & 98,54 & 45,76 & 62,50 \\
+
+Listas & 21 & 85 & 19 & 22,35 & 90,48 & 35,85 \\
+
+Ponteiros & 15 & 36 & 15 & 41,67 & 100,00 & 58,82 \\
+
+Nós & 14 & 8 & 5 & 62,50 & 35,71 & 45,45 \\
+
+Lista simplesmente encadeada & 32 & 47 & 29 & 61,70 & 90,63 & 73,42 \\
+
+Lista duplamente encadeada & 105 & 121 & 102 & 84,30 & 97,14 & 90,27 \\
+
+Pilhas & 196 & 169 & 163 & 96,45 & 83,16 & 89,32 \\
+
+Filas & 24 & 33 & 21 & 63,64 & 87,50 & 73,68 \\
+
+Recursão & 163 & 206 & 160 & 77,67 & 98,16 & 86,72 \\
+
+Hashing (Espalhamento) & 163 & 164 & 156 & 95,12 & 95,71 & 95,41 \\
+
+Árvore binária de busca & 249 & 262 & 242 & 92,37 & 97,19 & 94,72 \\
+
+Grafo & 139 & 148 & 133 & 89,86 & 95,68 & 92,68 \\ \hline
+
+\textbf{Média macro} &
+&
+&
+&
+\textbf{73,85} &
+\textbf{84,76} &
+\textbf{74,90} \\
+
+\textbf{Total} &
+\textbf{1.416} &
+\textbf{1.416} &
+\textbf{1.180} &
+&
+&
+\\ \hline
+
+\end{tabularx}
+\endgroup
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).}
+}
+
+\begin{minipage}{\textwidth}
+\footnotesize
+\noindent\textbf{Nota:} Acurácia geral =
+1.180 / 1.416 = 83,33\%.
+\end{minipage}
+
+\end{table}
+
+\FloatBarrier
+\novoBlocoTexto{
+    O desempenho variou entre os tópicos. Hashing (Espalhamento), Árvore binária de busca, Grafo, Lista duplamente encadeada e Pilhas obtiveram F1 acima de 89\%, enquanto Listas, Nós, Ponteiros e Revisão de Python ficaram entre 35,85\% e 62,50\%. O F1 macro, calculado pela média simples dos F1-scores de cada tópico e atribuindo o mesmo peso a todos eles (seção~\ref{sec:metricas-analise-erros}), foi de 74,90\%, abaixo da acurácia geral de 83,33\%.
+}
+
+\novoBlocoTexto{
+    Em dois grupos de tópicos, precisão e revocação seguiram direções opostas. Revisão de Python teve a maior precisão (98,54\%) e uma das menores revocações (45,76\%): quase todas as perguntas atribuídas a esse tópico eram dele, mas 160 das suas 295 perguntas foram atribuídas a outros. Listas e Ponteiros mostraram o inverso, com revocação de 90,48\% e 100\% e precisão de 22,35\% e 41,67\%, porque receberam perguntas de outros tópicos, sobretudo de Revisão de Python. A Figura~\ref{fig:matriz-confusao} apresenta a matriz de confusão, com o destino de cada pergunta.
+}
+
+\matrizconfusao
+
+\FloatBarrier
+
+\subsection{{\fontsize{12pt}{14pt}\selectfont Análise dos erros}}
+\label{sec:analise-erros}
+\novoBlocoTexto{
+    Das 236 perguntas atribuídas a um tópico diferente do de referência, 160 (67,8\%) eram de Revisão de Python e 33 (14,0\%) de Pilhas; os outros dez tópicos somaram 43 (18,2\%). Sem as perguntas de Revisão de Python, a concordância nos outros onze tópicos foi de 93,22\% (1.045 de 1.121). Os pares mais frequentes na matriz de confusão foram Revisão de Python → Listas (63 perguntas), Revisão de Python → Recursão (35), Revisão de Python → Ponteiros (11), Revisão de Python → Lista simplesmente encadeada (10) e Pilhas → Recursão (10).
+}
+
+\novoBlocoTexto{
+    A leitura das perguntas do conjunto aponta três causas prováveis. A primeira é a divisão diferente dos tópicos. No conjunto, Revisão de Python reúne perguntas sobre recursos da linguagem, e 58 das suas 295 perguntas citam listas, vetores (arrays), matrizes ou tuplas. No material da disciplina, as listas do Python são o conteúdo do tópico Listas, para o qual a plataforma levou 63 perguntas de Revisão de Python, 39 delas entre essas 58. As outras 24 tratam de outros recursos da linguagem, como laços de repetição, tipos mutáveis e imutáveis, cadeias de caracteres (strings) e dicionários, e parte desses assuntos também aparece no material de Listas, que apresenta a lista como sequência mutável e percorre os seus elementos com a função enumerate.
+}
+
+\novoBlocoTexto{
+    A segunda é que parte dos rótulos parece indicar o tema da aula, e não o assunto da pergunta. Os autores relatam que os estudantes muitas vezes perguntavam sobre assuntos diferentes do tópico escolhido no aplicativo, o que exigiu a categorização manual das perguntas \parencite{zaman2024dataset}. Ainda assim, 44 perguntas rotuladas como Revisão de Python, possívelmente, tratam, pelo texto, de outros tópicos: 25 de recursão, como “Como resolver o problema da Torre de Hanói usando recursão?”, 6 de grafos, 4 de hashing e 9 de outros tópicos. A plataforma atribuiu 43 delas ao tópico do assunto, assim como uma pergunta rotulada como Grafo que trata de árvore AVL.
+}
+
+\novoBlocoTexto{
+    A terceira são termos com mais de um sentido. Em Pilhas, 37 das 196 perguntas tratam da pilha como região de memória (heap, memória, estouro de pilha) e 19 citam recursão ou a pilha de chamadas. No material, a memória aparece no tópico Ponteiros e a pilha de chamadas no de Recursão, para os quais foram levadas 9 e 10 perguntas de Pilhas; as 9 levadas a Ponteiros tratam todas da pilha como memória do programa, como a alocação de memória na pilha, o estouro de buffer e o registrador de ponteiro de pilha. Do mesmo modo, 7 das 14 perguntas de Nós citam árvore, raiz, folha ou filho, e as 6 perguntas de Nós atribuídas a Árvore binária de busca tratam dos nós de uma árvore.
+}
+
+\novoBlocoTexto{
+    O Quadro \ref{quad:divergencias-classificacao} apresenta um exemplo de pergunta para cada uma dessas causas.
+}
+
+\begin{quadro}[H]\captionsetup{name=Quadro}
+\centering
+\caption{Exemplos de divergências na classificação das perguntas}
+\label{quad:divergencias-classificacao}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{3pt}
+
+\begin{tabularx}{\textwidth}{
+|>{\raggedright\arraybackslash}p{2.5cm}
+|>{\raggedright\arraybackslash}X
+|>{\raggedright\arraybackslash}p{2.2cm}
+|>{\raggedright\arraybackslash}p{2.0cm}|
+}
+\hline
+
+\rowcolor[HTML]{C0C0C0}
+\textbf{Causa provável} &
+\textbf{Pergunta enviada à plataforma} &
+\textbf{Tópico de referência} &
+\textbf{Tópico atribuído} \\ \hline
+
+Divisão diferente dos tópicos &
+Qual é a diferença entre uma lista e uma tupla em Python, tanto em termos de sintaxe quanto de mutabilidade? &
+Revisão de Python &
+Listas \\ \hline
+
+Rótulo pelo tema da aula &
+Como calcular o Máximo Divisor Comum (MDC) de dois números usando recursão? &
+Revisão de Python &
+Recursão \\ \hline
+
+Pergunta que depende de contexto &
+Você poderia fornecer um exemplo básico de código para inserir um elemento? &
+Árvore binária de busca &
+Listas \\ \hline
+
+Termo com mais de um sentido &
+Quais são os benefícios e os desafios da alocação de memória na pilha (\textit{stack}) em comparação com a alocação no \textit{heap}? &
+Pilhas &
+Ponteiros \\ \hline
+
+\end{tabularx}
+
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).}
+}
+\end{quadro}
+
+\FloatBarrier
+
+
+\FloatBarrier
+
+\novoBlocoTexto{
+A etapa em que cada divergência surgiu, na recuperação dos fragmentos ou na escolha da LLM, não foi quantificada nesta avaliação, embora o banco de dados registre os cinco fragmentos recuperados para cada pergunta. O painel mostra, porém, que a busca também recupera fragmentos de outros tópicos: entre os slides mais recuperados nas dúvidas atribuídas a Pilhas, está um slide do material de Filas (Figura \ref{fig:tela-topico-trechos}).
+}
+
+\novoBlocoTexto{
+Quanto à tradução, a comparação entre o texto original e o traduzido mostrou que os principais termos técnicos foram traduzidos como no material da disciplina em quase todas as perguntas; linked list, por exemplo, foi traduzido como lista encadeada em 148 das 151 perguntas em que aparece. Traduções incomuns, como “lista duplamente articulada” e “percussão” no lugar de percurso (traversal), ocorreram em 23 perguntas, e só 3 delas foram atribuídas a outro tópico. Em duas, a divergência já se explica pelas causas anteriores, e apenas em uma, sobre a detecção de ciclos em uma “lista duplamente articulada”, atribuída a Grafo, a tradução pode ter contribuído. Assim, nos termos conferidos, a tradução não explica as divergências observadas. A ambiguidade do termo pilha, que designa tanto a estrutura de dados quanto a região de memória, já existe no inglês stack e, portanto, não decorre da tradução.
+}
+
+\novoBlocoTexto{
+Para o professor, essas divergências aparecem na contagem de dúvidas por tópico do painel (Figura \ref{fig:tela-painel}). Os seis tópicos com mais dúvidas são os mesmos na referência e na plataforma (Revisão de Python, Árvore binária de busca, Pilhas, Recursão, Hashing (Espalhamento) e Grafo), mas em outra ordem: Revisão de Python, o tópico com mais perguntas na referência (295), aparece no painel em 6º lugar (137), enquanto Recursão passa de 163 para 206 dúvidas e Listas, de 21 para 85. Assim, o painel indica os conteúdos com mais dúvidas, mas subestima Revisão de Python e superestima Listas e Recursão, o que reforça que ele deve ser lido como subsídio, e não como diagnóstico definitivo (seção~\ref{sec:classificacao-textual-llm}).
+}
+\subsection{{\fontsize{12pt}{14pt}\selectfont Discussão e limitações}}
+\label{sec:discussao-limitacoes}
+\novoBlocoTexto{
+Os resultados indicam que a plataforma organizou as dúvidas pelos tópicos do material do professor com 83,33\% de concordância com a classificação manual de referência. Em relação ao problema desta pesquisa, isso significa que o professor pode reconhecer quais tópicos concentram mais dúvidas: os seis tópicos com mais perguntas foram os mesmos na referência e na plataforma (seção~\ref{sec:analise-erros}). Essa organização dispensa a categorização manual, tarefa trabalhosa que, na prática, impede o professor sem tempo disponível de aproveitar esses dados \parencite{lobo2025democratizing}.
+}
+
+\novoBlocoTexto{
+O desempenho foi maior nos tópicos de conteúdo bem delimitado, como Hashing (Espalhamento), Árvore binária de busca e Grafo, com F1 acima de 92\%, e menor nos tópicos cujo conteúdo se sobrepõe ao de outros, como Revisão de Python, Listas, Nós e Ponteiros. Parte dessas divergências decorre do critério de classificação: a referência agrupa parte das perguntas pelo tema da aula em que foram feitas, enquanto a plataforma as classifica pelo conteúdo do material do professor, que é a proposta deste trabalho. Assim, uma pergunta de Revisão de Python sobre listas atribuída ao tópico Listas conta como erro na avaliação, mas aponta ao professor a parte do material relacionada à dúvida, como ocorreu com 39 das 63 perguntas de Revisão de Python atribuídas a Listas e com 44 das 45 perguntas cujo rótulo difere do assunto (seção~\ref{sec:analise-erros}).
+}
+
+\novoBlocoTexto{
+Esse resultado deve ser lido considerando a dificuldade da própria tarefa. No estudo de \textcite{qiu2025systematic}, em uma avaliação humana de um subconjunto de 285 itens rotulados por uma LLM, três avaliadores independentes concordaram totalmente em 83,16\% dos itens (237 de 285), com kappa de 0,462, valor que os autores classificam como concordância moderada. Isso sugere que, mesmo entre avaliadores humanos, o julgamento do tópico de uma dúvida não é unânime. \textcite{lobo2025democratizing}, por sua vez, observaram desempenho fraco de modelos com cerca de 3 e 3,8 bilhões de parâmetros e lembram que, no estudo de Goldberg, Venters e Masnick (2021 apud \cite{lobo2025democratizing}), a concordância entre professores ao rotular perguntas foi de apenas cerca de 65\%; neste trabalho, um modelo de 7 bilhões de parâmetros, quantizado e executado localmente, com apoio do RAG, chegou a 83,33\%. Essas comparações são apenas indicativas, pois as tarefas diferem: em \textcite{qiu2025systematic}, o valor mede a concordância entre avaliadores, e não entre a LLM e uma referência, e em \textcite{lobo2025democratizing}, classificava-se o tipo da pergunta, e não o tópico.
+}
+
+\novoBlocoTexto{
+Mesmo com esse nível de concordância, uma em cada seis perguntas (16,67\%) foi apresentada em um tópico diferente do de referência, e as divergências, concentradas em poucos pares de tópicos, alteraram a ordem dos tópicos no painel (seção~\ref{sec:analise-erros}). Por isso, como discutido na seção~\ref{sec:classificacao-textual-llm}, a contagem por tópico deve ser apresentada ao professor como subsídio à análise pedagógica, e não como diagnóstico definitivo, cabendo a ele interpretar os dados e definir as ações, etapas que \textcite{wise2019teaching} apontam como parte da tomada de decisão docente fundamentada em dados.
+}
+
+\novoBlocoTexto{
+O experimento tem limitações. As perguntas foram escritas em inglês e traduzidas automaticamente, parte dos rótulos de referência indica o tema da aula, e não o assunto da pergunta, e 22 perguntas dependem de um contexto que não consta do conjunto de dados; os próprios autores reconhecem que o conjunto contém perguntas vagas ou mal estruturadas \parencite{zaman2024dataset}. Os itens do conteúdo programático foram gerados a partir dos tópicos extraídos do conjunto de referência, e as descrições dos tópicos extraídas do plano são enviadas à LLM na classificação, o que pode ter favorecido a concordância obtida (seção~\ref{sec:preparacao-disciplina}). Além disso, avaliou-se uma única disciplina, em uma única execução, com um único modelo e uma única configuração, sem medir a variação entre execuções, e as perguntas foram enviadas por automação, a partir de uma única conta, e não por estudantes de uma turma real. A etapa em que surgiu cada divergência não foi quantificada. Por fim, o material da disciplina foi elaborado a partir de apostilas para o experimento, e não pelo professor da disciplina, e a qualidade das respostas e dos resumos não foi avaliada.
+}

@@ -1,0 +1,298 @@
+\section{{\fontsize{12pt}{14pt}\selectfont MÉTODO DA PESQUISA}}
+\label{sec:metodo}
+\vspace{-0.3cm}
+\novoBlocoTexto{
+    A pesquisa classifica-se, quanto à abordagem, como quantitativa, uma vez que considera a compreensão dos elementos por meio de ferramentas estatísticas. Quanto à natureza, classifica-se como aplicada, uma vez que busca gerar conhecimento voltado à solução de um problema prático do ensino. Quanto aos objetivos, a pesquisa é exploratória, visando testar uma solução prática. Quanto aos procedimentos técnicos, combina pesquisa bibliográfica e pesquisa experimental. A disciplina de Estrutura de Dados é adotada como estudo de caso, sem que a proposta se restrinja a ela.
+}
+\novoBlocoTexto{
+    Inicialmente, realizou-se um levantamento bibliográfico em artigos, livros e documentos oficiais sobre a busca de ajuda por estudantes, o uso das dúvidas como subsídio à prática docente, assistentes educacionais, LLM, RAG, classificação de textos e proteção de dados na educação. As buscas foram feitas nas bases Scopus, Google Acadêmico, SBC OpenLib, IEEE Xplore, ACM Digital Library e arXiv. 
+}
+\novoBlocoTexto{
+    Na elaboração deste trabalho, utilizou-se o assistente de inteligência artificial generativa Claude, da Anthropic, como apoio nas seguintes atividades: revisão de partes do texto; conferência das citações e das referências; verificação dos cálculos das métricas; montagem dos slides e do plano de ensino usados no experimento, a partir do texto das apostilas citadas (seção~\ref{sec:preparacao-disciplina}); e escrita do script de tradução do conjunto de dados. Todo o conteúdo produzido com esse apoio foi revisado pela autora, que assume integral responsabilidade pelo texto, pelas análises e pelas conclusões, em consonância com a supervisão humana recomendada na seção~\ref{sec:llm}.
+}
+\novoBlocoTexto{
+    O protótipo foi desenvolvido como uma aplicação web com o \textit{framework Next.js} e a linguagem \textit{TypeScript} e o seu código-fonte está disponível em: \url{https://github.com/mayara-gregorio/Projeto-TCC/tree/v1.0-tcc}. O \textit{Supabase} foi utilizado para o banco de dados PostgreSQL, a autenticação dos usuários e o controle de acesso aos dados, de modo que cada aluno visualize apenas as próprias conversas e o professor visualize os resumos das dúvidas de suas disciplinas, como também, as perguntas originais. O professor cadastra a disciplina e convida os alunos mediante um código de acesso; o aluno, após ingressar, envia suas dúvidas em um chat.
+}
+\novoBlocoTexto{
+    Na preparação da plataforma, o professor envia o plano de ensino da disciplina, do qual a plataforma extrai a lista de tópicos por meio da LLM. O professor anexa o material didático associando-o ao tópico correspondente, em formato PDF. O texto desses materiais é extraído e dividido em fragmentos com cerca de 1.000 caracteres, tamanho também adotado por \textcite{qiu2025systematic}, em busca de equilíbrio entre fragmentos maiores, que preservam mais contexto, mas trazem mais ruído, e fragmentos menores, que têm menos ruído, mas podem não transmitir todo o contexto necessário \parencite{gao2023retrieval}. Cada fragmento, identificado pelo tópico a que pertence, é convertido em vetor pelo modelo de \textit{embeddings} \texttt{multilingual-e5-base} e armazenado no próprio banco de dados da aplicação, por meio da extensão \textit{pgvector} do \textit{PostgreSQL} no \textit{Supabase}.
+}
+\novoBlocoTexto{
+    Quando o aluno envia uma dúvida pelo chat, a pergunta é convertida em vetor pelo mesmo modelo, e o mecanismo de recuperação seleciona os cinco fragmentos mais semelhantes a ela (k = 5). Os fragmentos recuperados são entregues à LLM junto com a lista de tópicos da disciplina, e a LLM, com base neles, realiza três tarefas: classifica a dúvida em um dos tópicos, com um grau de confiança entre 0 e 1; responde ao aluno, indicando o material e o slide de onde veio a informação; e produz um título e um resumo individual da dúvida, em terceira pessoa. Se nenhum fragmento for recuperado, a LLM responde com conhecimento geral e avisa o aluno de que a explicação não veio do material do professor. O banco de dados armazena a pergunta original, o tópico atribuído e o resumo. Por fim, o painel do professor apresenta, para cada tópico, a quantidade de dúvidas, os respectivos resumos e as perguntas originais sem identificar os alunos que as enviaram.
+}
+\novoBlocoTexto{
+    A LLM utilizada é o \textit{Qwen2.5-7B-Instruct}, modelo de pesos abertos da família \textit{Qwen2.5}, que reúne versões de 0,5 a 72 bilhões de parâmetros \parencite{cruzcastaneda2025amadeus}, na versão quantizada em 4 bits (q4\_k\_m, formato GGUF), executada localmente por meio do \textit{llama.cpp}. A quantização representa os pesos do modelo com menos bits, o que reduz a memória necessária e acelera a geração, em troca de possível perda de precisão \parencite{chen2026ondevice}, e a execução local evita o envio das dúvidas a serviços externos de inferência. A classificação usa uma lista fechada com os tópicos da disciplina, os mesmos tópicos presentes no conjunto de dados usado na avaliação (seção~\ref{sec:avaliacao-experimental}).
+}
+\novoBlocoTexto{
+    Para a análise dos resultados, adotam-se duas bases: (i) o atendimento aos requisitos funcionais e não funcionais definidos na seção~\ref{sec:levantamento-requisitos}; e (ii) a avaliação experimental descrita na seção~\ref{sec:avaliacao-experimental}, que, em ambiente controlado, compara os tópicos atribuídos pela LLM às perguntas do conjunto de dados público utilizado com os tópicos de referência desse conjunto.
+}
+\subsection{{\fontsize{12pt}{14pt}\selectfont Levantamento de requisitos}}
+\label{sec:levantamento-requisitos}
+    
+\novoBlocoTexto{
+    Os requisitos do protótipo foram definidos a partir do fluxo descrito neste capítulo. Os requisitos funcionais (RF) são apresentados no Quadro \ref{quad:requisitos-funcionais}, e os não funcionais (RNF), no Quadro \ref{quad:requisitos-nao-funcionais}.
+}
+
+\begin{quadro}[H]\captionsetup{name=Quadro}
+\centering
+\caption{Requisitos funcionais}
+\label{quad:requisitos-funcionais}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+
+\begin{tabularx}{\textwidth}{
+|>{\centering\arraybackslash}m{1.5cm}
+|>{\raggedright\arraybackslash}X
+|>{\centering\arraybackslash}m{2.6cm}|
+}
+\hline
+
+\rowcolor[HTML]{C0C0C0}
+\textbf{Código} &
+\textbf{Requisito} &
+\textbf{Classificação} \\ \hline
+
+RF01 & Permitir ao professor cadastrar disciplinas. & Obrigatório \\ \hline
+
+RF02 & Permitir ao professor convidar alunos por código de acesso. & Obrigatório \\ \hline
+
+RF03 & Permitir ao professor enviar o plano de ensino da disciplina, do qual a LLM extrai os tópicos. & Obrigatório \\ \hline
+
+RF04 & Permitir ao professor associar materiais didáticos em PDF a cada tópico da disciplina. & Obrigatório \\ \hline
+
+RF05 & Extrair o texto dos materiais. & Obrigatório \\ \hline
+
+RF06 & Dividir o texto extraído dos materiais didáticos em fragmentos com cerca de 1.000 caracteres. & Obrigatório \\ \hline
+
+RF07 & Gerar os embeddings de cada fragmento extraído dos materiais didáticos. & Obrigatório \\ \hline
+
+RF08 & Permitir ao aluno enviar dúvidas por meio de um chat. & Obrigatório \\ \hline
+
+RF09 & Recuperar os cinco fragmentos do material mais semelhantes a cada dúvida. & Obrigatório \\ \hline
+
+RF10 & Gerar a resposta ao aluno com base nos fragmentos recuperados. & Obrigatório \\ \hline
+
+RF11 & Classificar cada dúvida em um dos tópicos da disciplina. & Obrigatório \\ \hline
+
+RF12 & Gerar um resumo individual de cada dúvida. & Obrigatório \\ \hline
+
+RF13 & Armazenar a pergunta original, o tópico atribuído e o resumo. & Obrigatório \\ \hline
+
+RF14 & Exibir ao professor um painel com a quantidade de dúvidas, os resumos por tópico e a dúvida. & Obrigatório \\ \hline
+\end{tabularx}
+\vspace{-0.2cm}
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).} % Legenda de baixo.
+}
+\end{quadro}
+
+\begin{quadro}[H]\captionsetup{name=Quadro}
+\centering
+\caption{Requisitos não funcionais}
+\label{quad:requisitos-nao-funcionais}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+
+\begin{tabularx}{\textwidth}{
+|>{\centering\arraybackslash}m{1.5cm}
+|>{\raggedright\arraybackslash}X
+|>{\centering\arraybackslash}m{2.6cm}|
+}
+\hline
+
+\rowcolor[HTML]{C0C0C0}
+\textbf{Código} &
+\textbf{Requisito} &
+\textbf{Prioridade} \\ \hline
+
+RNF01 & O sistema deve impedir que professores acessem os dados de identificação dos alunos associados às dúvidas. & Alta \\ \hline
+
+RNF02 & O sistema deve garantir que cada aluno tenha acesso somente às próprias conversas. & Alta \\ \hline
+
+RNF03 & O sistema deve aplicar políticas de segurança em nível de linha (RLS) no banco de dados Supabase para controlar o acesso aos registros. & Alta \\ \hline
+
+RNF04 & A inferência da LLM deve ocorrer localmente, sem o envio das dúvidas para serviços externos de inferência. & Alta \\ \hline
+
+RNF05 & O modelo de embeddings deve ser capaz de gerar representações vetoriais de textos em português. & Alta \\ \hline
+
+RNF06 & As respostas geradas pela LLM devem ser apresentadas ao aluno em português. & Alta \\ \hline
+
+RNF07 & Os embeddings devem ser armazenados no banco de dados PostgreSQL da aplicação, utilizando a extensão pgvector. & Alta \\ \hline
+
+RNF08 & A aplicação deve ser compatível com navegadores web modernos. & Alta \\ \hline
+
+RNF09 & O sistema deve informar ao aluno, antes do envio da dúvida, que o professor poderá visualizar a dúvida e um resumo da mesma, sem identificação nominal. & Alta \\ \hline
+\end{tabularx}
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).} % Legenda de baixo.
+}
+\end{quadro}
+\FloatBarrier
+
+\subsection{{\fontsize{12pt}{14pt}\selectfont Avaliação experimental}}
+\label{sec:avaliacao-experimental}
+\novoBlocoTexto{
+    A avaliação tem como objetivo comparar a classificação realizada pela plataforma com a classificação manual de um conjunto de dados de referência. Para isso, as perguntas desse conjunto, previamente rotuladas por tópico, são enviadas à própria plataforma, que, por meio de uma LLM com RAG, as classifica, e os tópicos atribuídos pela LLM são comparados aos tópicos atribuídos às mesmas perguntas no conjunto de dados de referência. Avalia-se uma única condição, a classificação com RAG; a qualidade das respostas e dos resumos não faz parte desta avaliação.
+}
+\subsubsection{{\fontsize{12pt}{14pt}\selectfont Conjunto de dados de referência}}
+\label{sec:conjunto-dados-referencia}
+\novoBlocoTexto{
+    Utiliza-se o conjunto de dados de \textcite{zaman2024dataset}, publicado em acesso aberto no repositório \textit{Mendeley Data}. Ele reúne perguntas de 126 estudantes de graduação da \textit{Independent University}, Bangladesh, registradas de forma anônima em uma aplicação web durante o semestre de verão de 2023, antes e depois das aulas de duas disciplinas de computação \parencite{zaman2024dataset}. Após a remoção de perguntas duplicadas e a correção de gramática e pontuação, as perguntas foram classificadas manualmente pelos autores segundo a disciplina e o tópico \parencite{zaman2024dataset}.
+}
+\novoBlocoTexto{
+    Neste trabalho, utiliza-se apenas o arquivo da disciplina de Estrutura de Dados, com 1.416 perguntas em inglês distribuídas em 12 tópicos (Tabela \ref{tab:distribuicao-de-perguntas-por-topico-no-conjunto-de-referencia}). A distribuição é desbalanceada: o tópico mais frequente reúne 20,8\% das perguntas, e o menos frequente, 1,0\%. Não são utilizados a pontuação segundo a taxonomia de \textit{Bloom}, também presente no arquivo, nem o arquivo de perguntas não relacionadas às disciplinas, já que a plataforma desenvolvida não adota categoria residual.
+}
+\begin{table}[htbp]
+\centering
+\caption{Distribuição das perguntas por tópico no conjunto de referência}
+\label{tab:distribuicao-de-perguntas-por-topico-no-conjunto-de-referencia}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+
+\begin{tabularx}{\textwidth}{
+>{\raggedright\arraybackslash}X
+>{\raggedright\arraybackslash}X
+>{\centering\arraybackslash}m{2.0cm}
+>{\centering\arraybackslash}m{1.0cm}
+}
+\hline
+
+\multicolumn{1}{c}{\textbf{Tópico no conjunto}} &
+\multicolumn{1}{c}{\textbf{Tradução}} &
+\multicolumn{1}{c}{\textbf{Perguntas}} &
+\multicolumn{1}{c}{\textbf{\%}} \\ \hline
+
+Python Review & Revisão de Python & 295 & 20,8 \\
+
+Binary Search Tree & Árvore binária de busca & 249 & 17,6 \\
+
+Stacks & Pilhas & 196 & 13,8 \\
+
+Hashing & Hashing (Espalhamento) & 163 & 11,5 \\
+
+Recursion & Recursão & 163 & 11,5 \\
+
+Graph & Grafo & 139 & 9,8 \\
+
+Doubly Linked List & Lista duplamente encadeada & 105 & 7,4 \\
+
+Singly Linked List & Lista simplesmente encadeada & 32 & 2,3 \\
+
+Queues & Filas & 24 & 1,7 \\
+
+Lists & Listas & 21 & 1,5 \\
+
+Pointers & Ponteiros & 15 & 1,1 \\
+
+Nodes & Nós & 14 & 1,0 \\ \hline
+
+\textbf{Total} & & \textbf{1.416} & \textbf{100,0} \\ \hline
+\end{tabularx}
+
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).}
+}
+
+\end{table}
+\FloatBarrier
+
+\novoBlocoTexto{
+    As perguntas foram traduzidas para o português por meio da API do tradutor automático \textit{DeepL} \parencite{deepl2026}, para validação do funcionamento do sistema no idioma referido; cada pergunta traduzida mantém o tópico de referência da original, e eventuais erros de tradução são considerados na análise dos erros. 
+}
+\novoBlocoTexto{
+    Foi observado que alguns dos tópicos do conjunto de dados de referência são próximos entre si, como Nós, Ponteiros e as listas encadeadas, e algumas perguntas dependem do contexto da aula em que foram feitas, como “\textit{How does it differ from a regular doubly linked list?}”. Essas características podem gerar divergências entre a LLM e a referência e são consideradas na análise dos erros.
+}   
+\subsubsection{{\fontsize{12pt}{14pt}\selectfont Preparação da disciplina na plataforma}}
+\label{sec:preparacao-disciplina}
+\novoBlocoTexto{
+    Para o experimento, cadastrou-se na plataforma uma disciplina designada "Estrutura de Dados", pois o conjunto de dados utilizado no experimento está relacionado a essa disciplina. Como o plano de ensino original da disciplina não está disponível, elaborou-se um plano com os 12 tópicos do conjunto de referência, com os nomes traduzidos da Tabela \ref{tab:distribuicao-de-perguntas-por-topico-no-conjunto-de-referencia}, que foi enviado à plataforma para a extração dos tópicos. Esse plano foi organizado como os planos de ensino dos cursos de graduação do IFMA, com objetivo geral, ementa, objetivos específicos, conteúdo programático, metodologia, recursos e informações relacionadas à avaliação de alunos. Além do título, a plataforma extrai do plano uma breve descrição de cada tópico. 
+}
+\novoBlocoTexto{
+    Como o conjunto de dados utilizado como referência não inclui o material didático da disciplina, elaborou-se, para cada tópico, um conjunto de slides em português a partir de três apostilas: \textcite{levada2021} e \textcite{silva2026}, com exemplos na linguagem Python, para onze tópicos, e \textcite{celes2002apostila}, com exemplos na linguagem C, para o tópico Ponteiros, que não é abordado nas duas primeiras (Tabela \ref{tab:distribuicao-materiais-por-topico}). Os slides reproduzem o texto dessas apostilas, sem acréscimos, com a fonte indicada no rodapé de cada um; apenas a formatação foi adaptada, e as figuras não foram reproduzidas. O material foi elaborado sem consulta às perguntas do conjunto de referência, para que não antecipe as dúvidas a serem classificadas. Os 12 arquivos, em PDF, somam 405 slides.
+}
+
+\begin{table}[H]
+\centering
+\caption{Distribuição dos materiais didáticos por tópico}
+\label{tab:distribuicao-materiais-por-topico}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+
+\begin{tabularx}{\textwidth}{
+>{\raggedright\arraybackslash}m{5.5cm}
+>{\raggedright\arraybackslash}X
+>{\centering\arraybackslash}m{2.0cm}
+}
+\hline
+
+\multicolumn{1}{c}{\textbf{Tópico}} &
+\multicolumn{1}{c}{\textbf{Fontes dos slides}} &
+\multicolumn{1}{c}{\textbf{Slides}} \\ \hline
+
+Revisão de Python &
+\textcite{levada2021}: ``A linguagem Python'', Aulas 1 e 4 &
+86 \\
+Listas &
+\textcite{silva2026}: ``Sequências e listas'' e Laboratório 2 &
+13 \\
+Ponteiros &
+\textcite{celes2002apostila}: seções 4.3, 5.2 e 7.4 &
+25 \\
+Nós &
+\textcite{levada2021}: Aula 6; \textcite{silva2026}: ``Listas encadeadas'' &
+7 \\
+Lista simplesmente encadeada &
+\textcite{levada2021}: Aula 6; \textcite{silva2026}: ``Listas encadeadas'' e Laboratório 5 &
+27 \\
+Lista duplamente encadeada &
+\textcite{levada2021}: Aula 6; \textcite{silva2026}: ``Listas encadeadas'' &
+12 \\
+Pilhas &
+\textcite{levada2021}: Aula 5; \textcite{silva2026}: ``Pilhas e filas'' e Laboratório 3 &
+22 \\
+Filas &
+\textcite{levada2021}: Aula 5; \textcite{silva2026}: ``Pilhas e filas'' e Laboratório 4 &
+27 \\
+Recursão &
+\textcite{levada2021}: Aulas 2 e 3; \textcite{silva2026}: ``Árvores e recursão'' e Laboratório 6 &
+17 \\
+Hashing (Espalhamento) &
+\textcite{silva2026}: ``Tabelas de espalhamento'' e Laboratório 12 &
+12 \\
+Árvore binária de busca &
+\textcite{levada2021}: Aula 7; \textcite{silva2026}: ``Árvores e recursão'' e Laboratório 7 &
+56 \\
+Grafo &
+\textcite{levada2021}: Aulas 8 a 11; \textcite{silva2026}: ``Grafos e redes'' e Laboratórios 9 a 11 &
+101 \\ \hline
+\textbf{Total} & & \textbf{405} \\ \hline
+\end{tabularx}
+{\fontsize{10pt}{12pt}\selectfont
+\caption*{Fonte: Elaborado pela autora (2026).}
+}
+\end{table}
+\FloatBarrier
+
+\subsubsection{{\fontsize{12pt}{14pt}\selectfont Execução da classificação}}
+\label{sec:execucao-classificacao}
+\novoBlocoTexto{
+    Cada uma das 1.416 perguntas traduzidas é enviada uma única vez à plataforma, pelo chat do aluno, por meio de testes automatizados com a biblioteca \textit{Selenium WebDriver}, que controla o navegador da mesma forma que um usuário \parencite{selenium2026}. Assim, cada pergunta percorre o mesmo fluxo de uma dúvida real: a recuperação dos cinco fragmentos mais semelhantes, a classificação pela LLM, a resposta ao aluno e o resumo da dúvida. A resposta e o resumo são gerados, mas não são avaliados. Para cada pergunta, o banco de dados registra o tópico e o grau de confiança atribuídos pela LLM e os cinco fragmentos recuperados, com a respectiva similaridade, o que permite identificar os tópicos a que esses fragmentos pertencem. Como a classificação considera apenas a pergunta, os tópicos da disciplina e os fragmentos recuperados, sem o histórico da conversa, a ordem de envio das perguntas não interfere no tópico atribuído.
+}
+\novoBlocoTexto{
+    A LLM é configurada com temperatura baixa (0,2), para reduzir a variação entre execuções, já que, mesmo com a mesma configuração, os resultados de uma LLM podem variar a cada execução \parencite{kocon2023chatgpt}. Segundo \textcite{renze2024effect}, variações de temperatura entre 0 e 1 não afetam de forma estatisticamente significativa o desempenho das LLMs na resolução de problemas. Como o arquivo de perguntas não relacionadas às disciplinas não é utilizado (seção~\ref{sec:conjunto-dados-referencia}), a LLM recebe no prompt a instrução de classificar cada dúvida obrigatoriamente em um dos 12 tópicos.
+}
+\subsubsection{{\fontsize{12pt}{14pt}\selectfont Métricas e análises de erros}}
+\label{sec:metricas-analise-erros}
+\novoBlocoTexto{
+    O desempenho da classificação é medido pela comparação entre o tópico atribuído pela LLM e o tópico de referência de cada pergunta. Calculam-se a acurácia geral e, para cada tópico, a precisão, a revocação e o F1-score, além da matriz de confusão, conforme definidos na seção~\ref{sec:classificacao-textual-llm}. Como os tópicos têm quantidades muito diferentes de perguntas, a precisão, a revocação e o F1-score são também apresentados como médias macro, calculadas pela média simples dos respectivos valores obtidos nos tópicos, atribuindo o mesmo peso a cada um deles \parencite{sokolova2009systematic}. Assim, o F1 macro corresponde à média dos F1-scores dos 12 tópicos. Como parâmetro mínimo de comparação, considera-se a acurácia de 20,8\%, que seria obtida ao atribuir todas as perguntas ao tópico mais frequente.
+}
+\novoBlocoTexto{
+    Por fim, os erros são analisados por tópico. A partir da matriz de confusão, identificam-se os pares de tópicos mais confundidos e examinam-se as perguntas classificadas incorretamente, para verificar se o erro decorre da proximidade entre os tópicos, de perguntas que dependem do contexto da aula, da tradução, da recuperação de fragmentos de outros tópicos ou da própria LLM. Essa análise é necessária porque, no painel, um erro de classificação corresponde a uma dúvida apresentada ao professor no tópico errado.
+}
+\subsubsection{{\fontsize{12pt}{14pt}\selectfont Aspectos éticos}}
+\novoBlocoTexto{
+    A avaliação não envolve participantes humanos: utiliza exclusivamente um conjunto de dados público, cujas perguntas foram coletadas de forma anônima e com o consentimento dos participantes \parencite{zaman2024dataset}.
+}

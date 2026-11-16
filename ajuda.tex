@@ -1,0 +1,66 @@
+\begin{comment}
+%NESTE ARQUIVO, VOCÊ OBTERÁ AJUDA PARA CONSTRUIR SEU TEXTO CASO TENHA DÚVIDA.
+
+%------------------------------------Títulos-----------------------------------
+
+\section{{\fontsize{12pt}{14pt}\selectfont Título}} % -> título de 1º ordem.
+\subsection{{\fontsize{12pt}{14pt}\selectfont Título}} % -> título de 2º ordem.
+\subsubsection{{\fontsize{12pt}{14pt}\selectfont Título}} % -> título de 3º ordem.
+\paragraph{{\fontsize{12pt}{14pt}\selectfont Título}} % -> título de 4º ordem.
+\subparagraph{{\fontsize{12pt}{14pt}\selectfont Título}} % -> título de 5º ordem.
+
+%------------------------------------------------------------------------------
+
+%-----------------Modelo de tabela segundo a norma vigente---------------------
+
+\begin{table}[!htbp]
+    \centering
+    \caption*{Modelo de Errata (Distribuição de livros nas escolas)}
+    \vspace{-0.4cm}
+    \small
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X 
+                                !{\vrule width 0.6pt}
+                                >{\centering\arraybackslash}X 
+                                !{\vrule width 0.6pt}
+                                >{\centering\arraybackslash}X 
+                                !{\vrule width 0.6pt}
+                                >{\centering\arraybackslash}X}
+    \toprule
+    \textbf{Folha} & \textbf{Linha} & \textbf{Onde se lê} & \textbf{Leia-se} \\
+    \midrule
+    36 & 8  & opconal    & opcional    \\
+    42 & 14 & maranhao   & Maranhão    \\
+    70 & 28 & publicacao & publicação  \\
+    \bottomrule
+    \multicolumn{7}{c}{\footnotesize Fonte: Elaborada pelos autores (2025).}
+    \end{tabularx}
+\end{table}
+
+%------------------------------------------------------------------------------
+
+%---------------Modelo de ilustrações segundo a norma vigente------------------
+    \begin{figure}[htbp]
+        \centering
+        \refstepcounter{figure} 
+    
+        {\fontsize{10pt}{12pt}\selectfont
+        Figura \thefigure{} – Modelo de figura (Panfleto de divulgação da Semana do Livro e da Biblioteca) % Legenda de cima
+        }
+    
+        \vspace{0.1cm}
+    
+        \includegraphics[width=1\textwidth]{IMAGENS/Imagem_de_ilustracao.png}
+        % Endereço da imagem.
+    
+        \vspace{-0.2cm}
+    
+        {\fontsize{10pt}{12pt}\selectfont
+        \caption*{Fonte: IFMA (2024).} % Legenda de baixo.
+        }
+    
+        \label{tabelaErrata}
+    \end{figure}
+    
+%------------------------------------------------------------------------------
+
+\end{comment}
