@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.11.15)  15 NOV 2026 15:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.11.15)  15 NOV 2026 21:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -995,42 +995,42 @@ Package pdftex.def Info: IMAGENS/tela_cadastro.png  used on input line 22.
 <IMAGENS/tela_disciplina_codigos_convite.png, id=144, 1036.87375pt x 795.97375pt>
 File: IMAGENS/tela_disciplina_codigos_convite.png Graphic file (type png)
 <use IMAGENS/tela_disciplina_codigos_convite.png>
-Package pdftex.def Info: IMAGENS/tela_disciplina_codigos_convite.png  used on input line 30.
+Package pdftex.def Info: IMAGENS/tela_disciplina_codigos_convite.png  used on input line 29.
 (pdftex.def)             Requested size: 455.24411pt x 349.47652pt.
  [36 <./IMAGENS/tela_login.png> <./IMAGENS/tela_cadastro.png>]
 <IMAGENS/tela_topico.png, id=151, 1036.87375pt x 804.00375pt>
 File: IMAGENS/tela_topico.png Graphic file (type png)
 <use IMAGENS/tela_topico.png>
-Package pdftex.def Info: IMAGENS/tela_topico.png  used on input line 32.
+Package pdftex.def Info: IMAGENS/tela_topico.png  used on input line 31.
 (pdftex.def)             Requested size: 455.24411pt x 353.00212pt.
  [37 <./IMAGENS/tela_disciplina_codigos_convite.png>]
 <IMAGENS/tela_chat_pergunta_resposta.png, id=156, 1351.0475pt x 623.32875pt>
 File: IMAGENS/tela_chat_pergunta_resposta.png Graphic file (type png)
 <use IMAGENS/tela_chat_pergunta_resposta.png>
-Package pdftex.def Info: IMAGENS/tela_chat_pergunta_resposta.png  used on input line 38.
+Package pdftex.def Info: IMAGENS/tela_chat_pergunta_resposta.png  used on input line 37.
 (pdftex.def)             Requested size: 455.24411pt x 210.03624pt.
  [38 <./IMAGENS/tela_topico.png>]
 <IMAGENS/tela_painel_professor.png, id=161, 1222.5675pt x 822.07124pt>
 File: IMAGENS/tela_painel_professor.png Graphic file (type png)
 <use IMAGENS/tela_painel_professor.png>
-Package pdftex.def Info: IMAGENS/tela_painel_professor.png  used on input line 44.
+Package pdftex.def Info: IMAGENS/tela_painel_professor.png  used on input line 43.
 (pdftex.def)             Requested size: 455.24411pt x 306.10588pt.
  [39 <./IMAGENS/tela_chat_pergunta_resposta.png>]
 <IMAGENS/tela_topico_resumo_duvidas.png, id=166, 1232.605pt x 927.465pt>
 File: IMAGENS/tela_topico_resumo_duvidas.png Graphic file (type png)
 <use IMAGENS/tela_topico_resumo_duvidas.png>
-Package pdftex.def Info: IMAGENS/tela_topico_resumo_duvidas.png  used on input line 50.
+Package pdftex.def Info: IMAGENS/tela_topico_resumo_duvidas.png  used on input line 49.
 (pdftex.def)             Requested size: 455.24411pt x 342.534pt.
 <IMAGENS/tela_topico_trechos_recuperados.png, id=167, 1222.5675pt x 840.13875pt>
 File: IMAGENS/tela_topico_trechos_recuperados.png Graphic file (type png)
 <use IMAGENS/tela_topico_trechos_recuperados.png>
-Package pdftex.def Info: IMAGENS/tela_topico_trechos_recuperados.png  used on input line 51.
+Package pdftex.def Info: IMAGENS/tela_topico_trechos_recuperados.png  used on input line 50.
 (pdftex.def)             Requested size: 455.24411pt x 312.83348pt.
  [40 <./IMAGENS/tela_painel_professor.png>] [41 <./IMAGENS/tela_topico_resumo_duvidas.png>] [42 <./IMAGENS/tela_topico_trechos_recuperados.png>] [43] [44] [45]
 <IMAGENS/figura_matriz_confusao.png, id=194, 3499.0725pt x 2421.045pt>
 File: IMAGENS/figura_matriz_confusao.png Graphic file (type png)
 <use IMAGENS/figura_matriz_confusao.png>
-Package pdftex.def Info: IMAGENS/figura_matriz_confusao.png  used on input line 342.
+Package pdftex.def Info: IMAGENS/figura_matriz_confusao.png  used on input line 341.
 (pdftex.def)             Requested size: 455.24411pt x 314.96855pt.
  [46 <./IMAGENS/figura_matriz_confusao.png (PNG copy)>] [47] [48] [49]) [50] (./conclusao.tex
 Overfull \hbox (1.17836pt too wide) in paragraph at lines 8--8
