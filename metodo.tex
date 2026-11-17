@@ -5,19 +5,16 @@
     A pesquisa classifica-se, quanto à abordagem, como quantitativa, uma vez que considera a compreensão dos elementos por meio de ferramentas estatísticas. Quanto à natureza, classifica-se como aplicada, uma vez que busca gerar conhecimento voltado à solução de um problema prático do ensino. Quanto aos objetivos, a pesquisa é exploratória, visando testar uma solução prática. Quanto aos procedimentos técnicos, combina pesquisa bibliográfica e pesquisa experimental. A disciplina de Estrutura de Dados é adotada como estudo de caso, sem que a proposta se restrinja a ela.
 }
 \novoBlocoTexto{
-    Inicialmente, realizou-se um levantamento bibliográfico em artigos, livros e documentos oficiais sobre a busca de ajuda por estudantes, o uso das dúvidas como subsídio à prática docente, assistentes educacionais, LLM, RAG, classificação de textos e proteção de dados na educação. As buscas foram feitas nas bases Scopus, Google Acadêmico, SBC OpenLib, IEEE Xplore, ACM Digital Library e arXiv. 
+    Inicialmente, realizou-se um levantamento bibliográfico em artigos, livros e documentos oficiais sobre a busca de ajuda por estudantes, o uso das dúvidas como subsídio à prática docente, assistentes educacionais, LLM, RAG, classificação de textos e proteção de dados na educação. As buscas foram feitas nas bases Scopus\footnote{Disponível em: \url{https://www.scopus.com}}, Google Acadêmico\footnote{Disponível em: \url{https://scholar.google.com}}, SBC OpenLib \footnote{Disponível em: \url{https://sol.sbc.org.br}}, IEEE Xplore \footnote{Disponível em: \url{https://ieeexplore.ieee.org}}, ACM Digital Library \footnote{Disponível em: \url{https://dl.acm.org}} e arXiv \footnote{Disponível em: \url{https://arxiv.org}}. 
 }
 \novoBlocoTexto{
-    Na elaboração deste trabalho, utilizou-se o assistente de inteligência artificial generativa Claude, da Anthropic, como apoio nas seguintes atividades: revisão de partes do texto; conferência das citações e das referências; verificação dos cálculos das métricas; montagem dos slides e do plano de ensino usados no experimento, a partir do texto das apostilas citadas (seção~\ref{sec:preparacao-disciplina}); e escrita do script de tradução do conjunto de dados. Todo o conteúdo produzido com esse apoio foi revisado pela autora, que assume integral responsabilidade pelo texto, pelas análises e pelas conclusões, em consonância com a supervisão humana recomendada na seção~\ref{sec:llm}.
+    O protótipo foi desenvolvido como uma aplicação web com o \textit{framework Next.js}\footnote{Disponível em: \url{https://nextjs.org}.}, conjunto de ferramentas de código aberto para a criação de aplicações web baseado na biblioteca \textit{React}, e com o \textit{TypeScript}\footnote{Disponível em: \url{https://www.typescriptlang.org}.}, um superconjunto sintático estrito do \textit{JavaScript} que acrescenta a ele a verificação de tipos. O código-fonte está disponível no \textit{GitHub}\footnote{Disponível em: \url{https://github.com/mayara-gregorio/Projeto-TCC/tree/v1.0-tcc}.}, plataforma de hospedagem e versionamento de código. O \textit{Supabase}\footnote{Disponível em: \url{https://supabase.com}.}, plataforma de código aberto que oferece, como serviço em nuvem, banco de dados, autenticação de usuários e controle de acesso, foi utilizado para o banco de dados \textit{PostgreSQL}\footnote{Disponível em: \url{https://www.postgresql.org}.}, sistema gerenciador de banco de dados objeto-relacional de código aberto, para a autenticação dos usuários e para o controle de acesso aos dados. Esse controle faz com que cada aluno visualize apenas as próprias conversas e que o professor visualize os resumos das dúvidas de suas disciplinas e as perguntas originais. O professor cadastra a disciplina e convida os alunos mediante um código de acesso; o aluno, após ingressar, envia suas dúvidas em um \textit{chat} (ambiente conversacional).
 }
 \novoBlocoTexto{
-    O protótipo foi desenvolvido como uma aplicação web com o \textit{framework Next.js} e a linguagem \textit{TypeScript} e o seu código-fonte está disponível em: \url{https://github.com/mayara-gregorio/Projeto-TCC/tree/v1.0-tcc}. O \textit{Supabase} foi utilizado para o banco de dados PostgreSQL, a autenticação dos usuários e o controle de acesso aos dados, de modo que cada aluno visualize apenas as próprias conversas e o professor visualize os resumos das dúvidas de suas disciplinas, como também, as perguntas originais. O professor cadastra a disciplina e convida os alunos mediante um código de acesso; o aluno, após ingressar, envia suas dúvidas em um chat.
+    Na preparação da plataforma, o professor envia o plano de ensino da disciplina, do qual a plataforma extrai a lista de tópicos por meio da LLM. O professor anexa o material didático associando-o ao tópico correspondente, em formato PDF. O texto desses materiais é extraído e dividido em fragmentos com cerca de 1.000 caracteres, usado com base no artigo \textcite{qiu2025systematic}, em busca de equilíbrio entre fragmentos maiores, que preservam mais contexto, mas trazem mais ruído, e fragmentos menores, que têm menos ruído, mas podem não transmitir todo o contexto necessário \parencite{gao2023retrieval}. Cada fragmento, identificado pelo tópico a que pertence, é convertido em vetor pelo modelo de \textit{embeddings} \texttt{multilingual-e5-base} e armazenado no próprio banco de dados da aplicação, por meio da extensão \textit{pgvector} do \textit{PostgreSQL} no \textit{Supabase}.
 }
 \novoBlocoTexto{
-    Na preparação da plataforma, o professor envia o plano de ensino da disciplina, do qual a plataforma extrai a lista de tópicos por meio da LLM. O professor anexa o material didático associando-o ao tópico correspondente, em formato PDF. O texto desses materiais é extraído e dividido em fragmentos com cerca de 1.000 caracteres, tamanho também adotado por \textcite{qiu2025systematic}, em busca de equilíbrio entre fragmentos maiores, que preservam mais contexto, mas trazem mais ruído, e fragmentos menores, que têm menos ruído, mas podem não transmitir todo o contexto necessário \parencite{gao2023retrieval}. Cada fragmento, identificado pelo tópico a que pertence, é convertido em vetor pelo modelo de \textit{embeddings} \texttt{multilingual-e5-base} e armazenado no próprio banco de dados da aplicação, por meio da extensão \textit{pgvector} do \textit{PostgreSQL} no \textit{Supabase}.
-}
-\novoBlocoTexto{
-    Quando o aluno envia uma dúvida pelo chat, a pergunta é convertida em vetor pelo mesmo modelo, e o mecanismo de recuperação seleciona os cinco fragmentos mais semelhantes a ela (k = 5). Os fragmentos recuperados são entregues à LLM junto com a lista de tópicos da disciplina, e a LLM, com base neles, realiza três tarefas: classifica a dúvida em um dos tópicos, com um grau de confiança entre 0 e 1; responde ao aluno, indicando o material e o slide de onde veio a informação; e produz um título e um resumo individual da dúvida, em terceira pessoa. Se nenhum fragmento for recuperado, a LLM responde com conhecimento geral e avisa o aluno de que a explicação não veio do material do professor. O banco de dados armazena a pergunta original, o tópico atribuído e o resumo. Por fim, o painel do professor apresenta, para cada tópico, a quantidade de dúvidas, os respectivos resumos e as perguntas originais sem identificar os alunos que as enviaram.
+    Quando o aluno envia uma dúvida pelo \textit{chat}, a pergunta é convertida em vetor pelo mesmo modelo, e o mecanismo de recuperação seleciona os cinco fragmentos mais semelhantes a ela (k = 5). Os fragmentos recuperados são entregues à LLM junto com a lista de tópicos da disciplina, e a LLM, com base neles, realiza três tarefas: classifica a dúvida em um dos tópicos, com um grau de confiança entre 0 e 1; responde ao aluno, indicando o material e o slide de onde veio a informação; e produz um título e um resumo individual da dúvida, em terceira pessoa. Se nenhum fragmento for recuperado, a LLM responde com conhecimento geral e avisa o aluno de que a explicação não veio do material do professor. O banco de dados armazena a pergunta original, o tópico atribuído e o resumo. Por fim, o painel do professor apresenta, para cada tópico, a quantidade de dúvidas, os respectivos resumos e as perguntas originais sem identificar os alunos que as enviaram.
 }
 \novoBlocoTexto{
     A LLM utilizada é o \textit{Qwen2.5-7B-Instruct}, modelo de pesos abertos da família \textit{Qwen2.5}, que reúne versões de 0,5 a 72 bilhões de parâmetros \parencite{cruzcastaneda2025amadeus}, na versão quantizada em 4 bits (q4\_k\_m, formato GGUF), executada localmente por meio do \textit{llama.cpp}. A quantização representa os pesos do modelo com menos bits, o que reduz a memória necessária e acelera a geração, em troca de possível perda de precisão \parencite{chen2026ondevice}, e a execução local evita o envio das dúvidas a serviços externos de inferência. A classificação usa uma lista fechada com os tópicos da disciplina, os mesmos tópicos presentes no conjunto de dados usado na avaliação (seção~\ref{sec:avaliacao-experimental}).
@@ -42,43 +39,41 @@
 
 \begin{tabularx}{\textwidth}{
 |>{\centering\arraybackslash}m{1.5cm}
-|>{\raggedright\arraybackslash}X
-|>{\centering\arraybackslash}m{2.6cm}|
+|>{\raggedright\arraybackslash}X|
 }
 \hline
 
 \rowcolor[HTML]{C0C0C0}
 \textbf{Código} &
-\textbf{Requisito} &
-\textbf{Classificação} \\ \hline
+\textbf{Requisito} \\ \hline
 
-RF01 & Permitir ao professor cadastrar disciplinas. & Obrigatório \\ \hline
+RF01 & Permitir ao professor cadastrar disciplinas. \\ \hline
 
-RF02 & Permitir ao professor convidar alunos por código de acesso. & Obrigatório \\ \hline
+RF02 & Permitir ao professor convidar alunos por código de acesso. \\ \hline
 
-RF03 & Permitir ao professor enviar o plano de ensino da disciplina, do qual a LLM extrai os tópicos. & Obrigatório \\ \hline
+RF03 & Permitir ao professor enviar o plano de ensino da disciplina, do qual a LLM extrai os tópicos. \\ \hline
 
-RF04 & Permitir ao professor associar materiais didáticos em PDF a cada tópico da disciplina. & Obrigatório \\ \hline
+RF04 & Permitir ao professor associar materiais didáticos em PDF a cada tópico da disciplina. \\ \hline
 
-RF05 & Extrair o texto dos materiais. & Obrigatório \\ \hline
+RF05 & Extrair o texto dos materiais. \\ \hline
 
-RF06 & Dividir o texto extraído dos materiais didáticos em fragmentos com cerca de 1.000 caracteres. & Obrigatório \\ \hline
+RF06 & Dividir o texto extraído dos materiais didáticos em fragmentos com cerca de 1.000 caracteres. \\ \hline
 
-RF07 & Gerar os embeddings de cada fragmento extraído dos materiais didáticos. & Obrigatório \\ \hline
+RF07 & Gerar os embeddings de cada fragmento extraído dos materiais didáticos. \\ \hline
 
-RF08 & Permitir ao aluno enviar dúvidas por meio de um chat. & Obrigatório \\ \hline
+RF08 & Permitir ao aluno enviar dúvidas por meio de um \textit{chat}. \\ \hline
 
-RF09 & Recuperar os cinco fragmentos do material mais semelhantes a cada dúvida. & Obrigatório \\ \hline
+RF09 & Recuperar os cinco fragmentos do material mais semelhantes a cada dúvida. \\ \hline
 
-RF10 & Gerar a resposta ao aluno com base nos fragmentos recuperados. & Obrigatório \\ \hline
+RF10 & Gerar a resposta ao aluno com base nos fragmentos recuperados. \\ \hline
 
-RF11 & Classificar cada dúvida em um dos tópicos da disciplina. & Obrigatório \\ \hline
+RF11 & Classificar cada dúvida em um dos tópicos da disciplina. \\ \hline
 
-RF12 & Gerar um resumo individual de cada dúvida. & Obrigatório \\ \hline
+RF12 & Gerar um resumo individual de cada dúvida. \\ \hline
 
-RF13 & Armazenar a pergunta original, o tópico atribuído e o resumo. & Obrigatório \\ \hline
+RF13 & Armazenar a pergunta original, o tópico atribuído e o resumo. \\ \hline
 
-RF14 & Exibir ao professor um painel com a quantidade de dúvidas, os resumos por tópico e a dúvida. & Obrigatório \\ \hline
+RF14 & Exibir ao professor um painel com a quantidade de dúvidas, os resumos por tópico e a dúvida. \\ \hline
 \end{tabularx}
 \vspace{-0.2cm}
 {\fontsize{10pt}{12pt}\selectfont
@@ -164,29 +159,29 @@ RNF09 & O sistema deve informar ao aluno, antes do envio da dúvida, que o profe
 \multicolumn{1}{c}{\textbf{Perguntas}} &
 \multicolumn{1}{c}{\textbf{\%}} \\ \hline
 
-Python Review & Revisão de Python & 295 & 20,8 \\
+\textit{Python Review} & Revisão de Python & 295 & 20,8 \\
 
-Binary Search Tree & Árvore binária de busca & 249 & 17,6 \\
+\textit{Binary Search Tree} & Árvore binária de busca & 249 & 17,6 \\
 
-Stacks & Pilhas & 196 & 13,8 \\
+\textit{Stacks} & Pilhas & 196 & 13,8 \\
 
-Hashing & Hashing (Espalhamento) & 163 & 11,5 \\
+\textit{Hashing} & \textit{Hashing} (Espalhamento) & 163 & 11,5 \\
 
-Recursion & Recursão & 163 & 11,5 \\
+\textit{Recursion} & Recursão & 163 & 11,5 \\
 
-Graph & Grafo & 139 & 9,8 \\
+\textit{Graph} & Grafo & 139 & 9,8 \\
 
-Doubly Linked List & Lista duplamente encadeada & 105 & 7,4 \\
+\textit{Doubly Linked List} & Lista duplamente encadeada & 105 & 7,4 \\
 
-Singly Linked List & Lista simplesmente encadeada & 32 & 2,3 \\
+\textit{Singly Linked List} & Lista simplesmente encadeada & 32 & 2,3 \\
 
-Queues & Filas & 24 & 1,7 \\
+\textit{Queues} & Filas & 24 & 1,7 \\
 
-Lists & Listas & 21 & 1,5 \\
+\textit{Lists} & Listas & 21 & 1,5 \\
 
-Pointers & Ponteiros & 15 & 1,1 \\
+\textit{Pointers} & Ponteiros & 15 & 1,1 \\
 
-Nodes & Nós & 14 & 1,0 \\ \hline
+\textit{Nodes} & Nós & 14 & 1,0 \\ \hline
 
 \textbf{Total} & & \textbf{1.416} & \textbf{100,0} \\ \hline
 \end{tabularx}
@@ -199,10 +194,10 @@ Nodes & Nós & 14 & 1,0 \\ \hline
 \FloatBarrier
 
 \novoBlocoTexto{
-    As perguntas foram traduzidas para o português por meio da API do tradutor automático \textit{DeepL} \parencite{deepl2026}, para validação do funcionamento do sistema no idioma referido; cada pergunta traduzida mantém o tópico de referência da original, e eventuais erros de tradução são considerados na análise dos erros. 
+    As perguntas foram traduzidas para o português por meio da API do tradutor automático \textit{DeepL}\footnote{Disponível em: \url{https://www.deepl.com}.} \parencite{deepl2026}, para validação do funcionamento do sistema no idioma referido; cada pergunta traduzida mantém o tópico de referência da original, e eventuais erros de tradução são considerados na análise dos erros. 
 }
 \novoBlocoTexto{
-    Foi observado que alguns dos tópicos do conjunto de dados de referência são próximos entre si, como Nós, Ponteiros e as listas encadeadas, e algumas perguntas dependem do contexto da aula em que foram feitas, como “\textit{How does it differ from a regular doubly linked list?}”. Essas características podem gerar divergências entre a LLM e a referência e são consideradas na análise dos erros.
+    Foi observado que alguns dos tópicos do conjunto de dados de referência são próximos entre si, como Nós, Ponteiros e as listas encadeadas, essa característica pode gerar divergências entre a LLM e a referência, sendo considerada na análise dos erros.
 }   
 \subsubsection{{\fontsize{12pt}{14pt}\selectfont Preparação da disciplina na plataforma}}
 \label{sec:preparacao-disciplina}
@@ -259,7 +254,7 @@ Filas &
 Recursão &
 \textcite{levada2021}: Aulas 2 e 3; \textcite{silva2026}: ``Árvores e recursão'' e Laboratório 6 &
 17 \\
-Hashing (Espalhamento) &
+\textit{Hashing} (Espalhamento) &
 \textcite{silva2026}: ``Tabelas de espalhamento'' e Laboratório 12 &
 12 \\
 Árvore binária de busca &
@@ -279,18 +274,18 @@ Grafo &
 \subsubsection{{\fontsize{12pt}{14pt}\selectfont Execução da classificação}}
 \label{sec:execucao-classificacao}
 \novoBlocoTexto{
-    Cada uma das 1.416 perguntas traduzidas é enviada uma única vez à plataforma, pelo chat do aluno, por meio de testes automatizados com a biblioteca \textit{Selenium WebDriver}, que controla o navegador da mesma forma que um usuário \parencite{selenium2026}. Assim, cada pergunta percorre o mesmo fluxo de uma dúvida real: a recuperação dos cinco fragmentos mais semelhantes, a classificação pela LLM, a resposta ao aluno e o resumo da dúvida. A resposta e o resumo são gerados, mas não são avaliados. Para cada pergunta, o banco de dados registra o tópico e o grau de confiança atribuídos pela LLM e os cinco fragmentos recuperados, com a respectiva similaridade, o que permite identificar os tópicos a que esses fragmentos pertencem. Como a classificação considera apenas a pergunta, os tópicos da disciplina e os fragmentos recuperados, sem o histórico da conversa, a ordem de envio das perguntas não interfere no tópico atribuído.
+    Cada uma das 1.416 perguntas traduzidas é enviada uma única vez à plataforma, pelo \textit{chat} do aluno, por meio de testes automatizados com a biblioteca \textit{Selenium WebDriver}\footnote{Disponível em: \url{https://www.selenium.dev}}, que controla o navegador da mesma forma que um usuário \parencite{selenium2026}. Assim, cada pergunta percorre o mesmo fluxo de uma dúvida real: a recuperação dos cinco fragmentos mais semelhantes, a classificação pela LLM, a resposta ao aluno e o resumo da dúvida. A resposta e o resumo são gerados, mas não são avaliados. Para cada pergunta, o banco de dados registra o tópico e o grau de confiança atribuídos pela LLM e os cinco fragmentos recuperados, com a respectiva similaridade, o que permite identificar os tópicos a que esses fragmentos pertencem. Como a classificação considera apenas a pergunta, os tópicos da disciplina e os fragmentos recuperados, sem o histórico da conversa, a ordem de envio das perguntas não interfere no tópico atribuído.
 }
 \novoBlocoTexto{
-    A LLM é configurada com temperatura baixa (0,2), para reduzir a variação entre execuções, já que, mesmo com a mesma configuração, os resultados de uma LLM podem variar a cada execução \parencite{kocon2023chatgpt}. Segundo \textcite{renze2024effect}, variações de temperatura entre 0 e 1 não afetam de forma estatisticamente significativa o desempenho das LLMs na resolução de problemas. Como o arquivo de perguntas não relacionadas às disciplinas não é utilizado (seção~\ref{sec:conjunto-dados-referencia}), a LLM recebe no prompt a instrução de classificar cada dúvida obrigatoriamente em um dos 12 tópicos.
+    A LLM é configurada com temperatura baixa (0,2). A temperatura é um parâmetro que controla a aleatoriedade das respostas geradas pelo modelo: quanto menor o valor, mais determinística é a saída, que passa a favorecer as escolhas mais prováveis \parencite{renze2024effect}. O valor baixo busca reduzir a variação entre execuções, já que, mesmo com a mesma configuração, os resultados de uma LLM podem variar a cada execução \parencite{kocon2023chatgpt}. Segundo \textcite{renze2024effect}, variações de temperatura entre 0 e 1 não afetam de forma estatisticamente significativa o desempenho das LLM na resolução de problemas. Como o arquivo de perguntas não relacionadas às disciplinas não é utilizado (seção~\ref{sec:conjunto-dados-referencia}), a LLM recebe no \textit{prompt} a instrução de classificar cada dúvida obrigatoriamente em um dos 12 tópicos.
 }
 \subsubsection{{\fontsize{12pt}{14pt}\selectfont Métricas e análises de erros}}
 \label{sec:metricas-analise-erros}
 \novoBlocoTexto{
-    O desempenho da classificação é medido pela comparação entre o tópico atribuído pela LLM e o tópico de referência de cada pergunta. Calculam-se a acurácia geral e, para cada tópico, a precisão, a revocação e o F1-score, além da matriz de confusão, conforme definidos na seção~\ref{sec:classificacao-textual-llm}. Como os tópicos têm quantidades muito diferentes de perguntas, a precisão, a revocação e o F1-score são também apresentados como médias macro, calculadas pela média simples dos respectivos valores obtidos nos tópicos, atribuindo o mesmo peso a cada um deles \parencite{sokolova2009systematic}. Assim, o F1 macro corresponde à média dos F1-scores dos 12 tópicos. Como parâmetro mínimo de comparação, considera-se a acurácia de 20,8\%, que seria obtida ao atribuir todas as perguntas ao tópico mais frequente.
+    O desempenho da classificação é medido pela comparação entre o tópico atribuído pela LLM e o tópico de referência de cada pergunta. Calculam-se a acurácia geral e, para cada tópico, a precisão, a revocação e o F1-score, além da matriz de confusão, conforme definidos na seção~\ref{sec:classificacao-textual-llm}. Como os tópicos têm quantidades muito diferentes de perguntas, a precisão, a revocação e o F1-score são também apresentados como médias macro, calculadas pela média simples dos respectivos valores obtidos nos tópicos, atribuindo o mesmo peso a cada um deles \parencite{sokolova2009systematic}. Assim, o macro F1-score corresponde à média dos F1-scores dos 12 tópicos. Como parâmetro mínimo de comparação, considera-se a acurácia de 20,8\%, que seria obtida ao atribuir todas as perguntas ao tópico mais frequente.
 }
 \novoBlocoTexto{
-    Por fim, os erros são analisados por tópico. A partir da matriz de confusão, identificam-se os pares de tópicos mais confundidos e examinam-se as perguntas classificadas incorretamente, para verificar se o erro decorre da proximidade entre os tópicos, de perguntas que dependem do contexto da aula, da tradução, da recuperação de fragmentos de outros tópicos ou da própria LLM. Essa análise é necessária porque, no painel, um erro de classificação corresponde a uma dúvida apresentada ao professor no tópico errado.
+    Por fim, os erros são analisados por tópico. A partir da matriz de confusão, identificam-se os pares de tópicos mais confundidos e examinam-se as perguntas classificadas incorretamente, para verificar se o erro decorre da proximidade entre os tópicos, da tradução, da recuperação de fragmentos de outros tópicos ou da própria LLM. Essa análise é necessária porque, no painel, um erro de classificação corresponde a uma dúvida apresentada ao professor no tópico errado.
 }
 \subsubsection{{\fontsize{12pt}{14pt}\selectfont Aspectos éticos}}
 \novoBlocoTexto{

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.11.15)  15 NOV 2026 21:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.11.15)  17 NOV 2026 03:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -867,14 +867,17 @@ Overfull \hbox (2.61105pt too wide) in paragraph at lines 52--52
  |  $[]$
  []
 
-
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 52--52
- |  $[]$
- []
-
 [1
 
 ]
+<IMAGENS/Ficha_Catalográfica.png, id=14, 1678.27pt x 944.52875pt>
+File: IMAGENS/Ficha_Catalográfica.png Graphic file (type png)
+<use IMAGENS/Ficha_Catalográfica.png>
+Package pdftex.def Info: IMAGENS/Ficha_Catalográfica.png  used on input line 57.
+(pdftex.def)             Requested size: 355.64815pt x 200.15843pt.
+ [1
+
+ <./IMAGENS/Ficha_Catalográfica.png (PNG copy)>]
 Underfull \hbox (badness 1178) in paragraph at lines 66--66
 \OT1/lmr/m/n/10 Ins-ti-tuto Fe-de-ral do Ma-ranh~ao Cam-pus Ti-mon,
  []
@@ -903,174 +906,168 @@ Overfull \hbox (2.61105pt too wide) in paragraph at lines 72--72
 
 [4
 
-] (./resumo.tex) [5
+] (./resumo.tex
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 9.
+ (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [5
 
 
-] (./abstract.tex) [6
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}]) [6] (./abstract.tex) [7
 
 
-] (./main.lof)
-\tf@lof=\write5
-\openout5 = `main.lof'.
+] [8
 
- [7
-
-] (./main.lot)
-\tf@lot=\write6
-\openout6 = `main.lot'.
-
- [8
-
-] (./main.loq)
-\tf@loq=\write7
-\openout7 = `main.loq'.
-
- [9
+] [9
 
 ] [10
 
-] (./main.toc)
-\tf@toc=\write8
-\openout8 = `main.toc'.
-
- [11
-
-
 ]
-\c@paginasPreTextuais=\count464
- (./introducao.tex [13
+Overfull \hbox (20.54892pt too wide) in paragraph at lines 93--93
+\OT1/lmr/m/n/12 TF-IDF   Frequ^encia do Termo--Inverso da Frequ^encia nos Do-cu-men-tos (\OT1/lmr/m/it/12 Term Frequency--
+ []
 
-]) [14] (./objetivos.tex
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+
+ []
+
+[11
+
+] (./main.toc)
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+ [12]
+\c@paginasPreTextuais=\count464
+ (./introducao.tex [14
+
+]) [15] (./objetivos.tex
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 10.
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Overfull \hbox (1.56593pt too wide) in paragraph at lines 15--16
-[]\OT1/lmr/m/n/12 Avaliar, em am-bi-ente con-tro-lado, o de-sem-pe-nho da clas-si-fica^^Xc~ao tem^^Satica das d^^Suvidas
- []
+)) [16
 
-) [15
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}] (./referencial.tex [17
 
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}] (./referencial.tex [16
+] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27]) [28] (./metodo.tex
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 9.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 9.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 9.
+ [29
 
-] [17] [18] [19] [20] [21] [22] [23] [24] [25]) [26] (./metodo.tex
-LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 15.
- (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
-File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [27
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}] [28] [29] [30]
-Overfull \hbox (2.29726pt too wide) in paragraph at lines 192--192
+] [30] [31] [32]
+Overfull \hbox (2.29726pt too wide) in paragraph at lines 187--187
  []|\OT1/lmr/bx/n/12 100,0| 
  []
 
-[31] [32] [33]) [34] (./resultados.tex
+[33] [34] [35] [36]) [37] (./resultados.tex
+<IMAGENS/preparacao_disciplina.png, id=139, 3217.01875pt x 871.255pt>
+File: IMAGENS/preparacao_disciplina.png Graphic file (type png)
+<use IMAGENS/preparacao_disciplina.png>
+Package pdftex.def Info: IMAGENS/preparacao_disciplina.png  used on input line 15.
+(pdftex.def)             Requested size: 455.24411pt x 123.291pt.
+<IMAGENS/envio_processamento_duvida.png, id=140, 3206.98125pt x 965.6075pt>
+File: IMAGENS/envio_processamento_duvida.png Graphic file (type png)
+<use IMAGENS/envio_processamento_duvida.png>
+Package pdftex.def Info: IMAGENS/envio_processamento_duvida.png  used on input line 17.
+(pdftex.def)             Requested size: 455.24411pt x 137.07007pt.
+<IMAGENS/consulta_painel_docente.png, id=141, 2211.26125pt x 1004.75375pt>
+File: IMAGENS/consulta_painel_docente.png Graphic file (type png)
+<use IMAGENS/consulta_painel_docente.png>
+Package pdftex.def Info: IMAGENS/consulta_painel_docente.png  used on input line 19.
+(pdftex.def)             Requested size: 455.24411pt x 206.84973pt.
+ [38
 
-LaTeX Warning: Reference `fig:bpmn-preparacao' on page 35 undefined on input line 13.
-
-
-LaTeX Warning: Reference `fig:bpmn-duvidas' on page 35 undefined on input line 13.
-
-
-LaTeX Warning: Reference `fig:bpmn-painel' on page 35 undefined on input line 13.
-
-<IMAGENS/fluxo_principal_bpmn.pdf, id=122, 1908.37968pt x 579.66562pt>
-File: IMAGENS/fluxo_principal_bpmn.pdf Graphic file (type pdf)
-<use IMAGENS/fluxo_principal_bpmn.pdf>
-Package pdftex.def Info: IMAGENS/fluxo_principal_bpmn.pdf  used on input line 14.
-(pdftex.def)             Requested size: 455.24411pt x 138.27347pt.
-<IMAGENS/tela_login.png, id=123, 514.92375pt x 446.66875pt>
+ <./IMAGENS/preparacao_disciplina.png (PNG copy)> <./IMAGENS/envio_processamento_duvida.png (PNG copy)>]
+<IMAGENS/tela_login.png, id=145, 514.92375pt x 446.66875pt>
 File: IMAGENS/tela_login.png Graphic file (type png)
 <use IMAGENS/tela_login.png>
-Package pdftex.def Info: IMAGENS/tela_login.png  used on input line 22.
+Package pdftex.def Info: IMAGENS/tela_login.png  used on input line 28.
 (pdftex.def)             Requested size: 218.51521pt x 189.54884pt.
-<IMAGENS/tela_cadastro.png, id=125, 514.92375pt x 505.89pt>
+<IMAGENS/tela_cadastro.png, id=147, 514.92375pt x 505.89pt>
 File: IMAGENS/tela_cadastro.png Graphic file (type png)
 <use IMAGENS/tela_cadastro.png>
-Package pdftex.def Info: IMAGENS/tela_cadastro.png  used on input line 22.
+Package pdftex.def Info: IMAGENS/tela_cadastro.png  used on input line 28.
 (pdftex.def)             Requested size: 218.51521pt x 214.68004pt.
-[35
-
- <./IMAGENS/fluxo_principal_bpmn.pdf>]
-<IMAGENS/tela_disciplina_codigos_convite.png, id=144, 1036.87375pt x 795.97375pt>
+ [39 <./IMAGENS/consulta_painel_docente.png (PNG copy)> <./IMAGENS/tela_login.png> <./IMAGENS/tela_cadastro.png>]
+<IMAGENS/tela_disciplina_codigos_convite.png, id=153, 1036.87375pt x 795.97375pt>
 File: IMAGENS/tela_disciplina_codigos_convite.png Graphic file (type png)
 <use IMAGENS/tela_disciplina_codigos_convite.png>
-Package pdftex.def Info: IMAGENS/tela_disciplina_codigos_convite.png  used on input line 29.
+Package pdftex.def Info: IMAGENS/tela_disciplina_codigos_convite.png  used on input line 35.
 (pdftex.def)             Requested size: 455.24411pt x 349.47652pt.
- [36 <./IMAGENS/tela_login.png> <./IMAGENS/tela_cadastro.png>]
-<IMAGENS/tela_topico.png, id=151, 1036.87375pt x 804.00375pt>
+<IMAGENS/tela_topico.png, id=154, 1036.87375pt x 804.00375pt>
 File: IMAGENS/tela_topico.png Graphic file (type png)
 <use IMAGENS/tela_topico.png>
-Package pdftex.def Info: IMAGENS/tela_topico.png  used on input line 31.
+Package pdftex.def Info: IMAGENS/tela_topico.png  used on input line 37.
 (pdftex.def)             Requested size: 455.24411pt x 353.00212pt.
- [37 <./IMAGENS/tela_disciplina_codigos_convite.png>]
-<IMAGENS/tela_chat_pergunta_resposta.png, id=156, 1351.0475pt x 623.32875pt>
+ [40 <./IMAGENS/tela_disciplina_codigos_convite.png>]
+<IMAGENS/tela_chat_pergunta_resposta.png, id=159, 1351.0475pt x 623.32875pt>
 File: IMAGENS/tela_chat_pergunta_resposta.png Graphic file (type png)
 <use IMAGENS/tela_chat_pergunta_resposta.png>
-Package pdftex.def Info: IMAGENS/tela_chat_pergunta_resposta.png  used on input line 37.
+Package pdftex.def Info: IMAGENS/tela_chat_pergunta_resposta.png  used on input line 43.
 (pdftex.def)             Requested size: 455.24411pt x 210.03624pt.
- [38 <./IMAGENS/tela_topico.png>]
-<IMAGENS/tela_painel_professor.png, id=161, 1222.5675pt x 822.07124pt>
+ [41 <./IMAGENS/tela_topico.png>]
+<IMAGENS/tela_painel_professor.png, id=165, 1222.5675pt x 822.07124pt>
 File: IMAGENS/tela_painel_professor.png Graphic file (type png)
 <use IMAGENS/tela_painel_professor.png>
-Package pdftex.def Info: IMAGENS/tela_painel_professor.png  used on input line 43.
+Package pdftex.def Info: IMAGENS/tela_painel_professor.png  used on input line 49.
 (pdftex.def)             Requested size: 455.24411pt x 306.10588pt.
- [39 <./IMAGENS/tela_chat_pergunta_resposta.png>]
-<IMAGENS/tela_topico_resumo_duvidas.png, id=166, 1232.605pt x 927.465pt>
+ [42 <./IMAGENS/tela_chat_pergunta_resposta.png>]
+<IMAGENS/tela_topico_resumo_duvidas.png, id=171, 1232.605pt x 927.465pt>
 File: IMAGENS/tela_topico_resumo_duvidas.png Graphic file (type png)
 <use IMAGENS/tela_topico_resumo_duvidas.png>
-Package pdftex.def Info: IMAGENS/tela_topico_resumo_duvidas.png  used on input line 49.
+Package pdftex.def Info: IMAGENS/tela_topico_resumo_duvidas.png  used on input line 55.
 (pdftex.def)             Requested size: 455.24411pt x 342.534pt.
-<IMAGENS/tela_topico_trechos_recuperados.png, id=167, 1222.5675pt x 840.13875pt>
+<IMAGENS/tela_topico_trechos_recuperados.png, id=172, 1222.5675pt x 840.13875pt>
 File: IMAGENS/tela_topico_trechos_recuperados.png Graphic file (type png)
 <use IMAGENS/tela_topico_trechos_recuperados.png>
-Package pdftex.def Info: IMAGENS/tela_topico_trechos_recuperados.png  used on input line 50.
+Package pdftex.def Info: IMAGENS/tela_topico_trechos_recuperados.png  used on input line 56.
 (pdftex.def)             Requested size: 455.24411pt x 312.83348pt.
- [40 <./IMAGENS/tela_painel_professor.png>] [41 <./IMAGENS/tela_topico_resumo_duvidas.png>] [42 <./IMAGENS/tela_topico_trechos_recuperados.png>] [43] [44] [45]
-<IMAGENS/figura_matriz_confusao.png, id=194, 3499.0725pt x 2421.045pt>
-File: IMAGENS/figura_matriz_confusao.png Graphic file (type png)
-<use IMAGENS/figura_matriz_confusao.png>
-Package pdftex.def Info: IMAGENS/figura_matriz_confusao.png  used on input line 341.
-(pdftex.def)             Requested size: 455.24411pt x 314.96855pt.
- [46 <./IMAGENS/figura_matriz_confusao.png (PNG copy)>] [47] [48] [49]) [50] (./conclusao.tex
-Overfull \hbox (1.17836pt too wide) in paragraph at lines 8--8
-[][]\OT1/lmr/m/n/12 Quanto aos ob-je-ti-vos es-pec^^S^^Pficos, a re-vis~ao da li-te-ra-tura mos-trou que mui-tas d^^Suvidas
+ [43 <./IMAGENS/tela_painel_professor.png>] [44 <./IMAGENS/tela_topico_resumo_duvidas.png>] [45 <./IMAGENS/tela_topico_trechos_recuperados.png>] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 245--245
+[][]\OT1/lmr/m/n/10 Dispon^^S^^Pvel em: $\OT1/lmtt/m/n/10 https : / / docs . google . com / spreadsheets / d / 12FplYIpg0O _ vLE _
  []
 
-[51
+[47] [48]
+<IMAGENS/figura_matriz_confusao.png, id=198, 3499.0725pt x 2421.045pt>
+File: IMAGENS/figura_matriz_confusao.png Graphic file (type png)
+<use IMAGENS/figura_matriz_confusao.png>
+Package pdftex.def Info: IMAGENS/figura_matriz_confusao.png  used on input line 344.
+(pdftex.def)             Requested size: 455.24411pt x 314.96855pt.
+ [49 <./IMAGENS/figura_matriz_confusao.png (PNG copy)>] [50] [51] [52]) [53] (./conclusao.tex [54
 
-]) [52] [53
+] [55]) [56] [57
 
-] [54] [55] [56] [57] [58] [59] [60] [61
+] [58] [59] [60] [61] [62] [63] [64] [65
 
-] [62] 
+] [66] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18011 strings out of 467533
- 338197 string characters out of 5422137
- 1267079 words of memory out of 5000000
- 46622 multiletter control sequences out of 15000+600000
- 675711 words of font info for 67 fonts, out of 8000000 for 9000
+ 18039 strings out of 467533
+ 339318 string characters out of 5422137
+ 1269310 words of memory out of 5000000
+ 46653 multiletter control sequences out of 15000+600000
+ 685776 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,15n,83p,1987b,3956s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (63 pages, 1307844 bytes).
+ 78i,15n,83p,2779b,3956s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
+Output written on main.pdf (68 pages, 2592724 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
+ 317 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

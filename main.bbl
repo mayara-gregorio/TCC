@@ -1249,6 +1249,64 @@
       \verb https://doi.org/10.18653/v1/2023.emnlp-main.674
       \endverb
     \endentry
+    \entry{goldberg2021refining}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b0121cee521cd281ef09bac2ac5e4dda}{%
+           family={Goldberg},
+           familyi={G\bibinitperiod},
+           given={Saryn\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cf16c1195e02bb46a3ca7fa31f33461d}{%
+           family={Venters},
+           familyi={V\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dd315ed181d7943f0ed8a5b64830ac36}{%
+           family={Masnick},
+           familyi={M\bibinitperiod},
+           given={Amy},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {On-line}%
+      }
+      \list{publisher}{1}{%
+        {ASEE Conferences}%
+      }
+      \strng{namehash}{e9bca27c0fde3ecee550c98949422e2a}
+      \strng{fullhash}{e9bca27c0fde3ecee550c98949422e2a}
+      \strng{fullhashraw}{e9bca27c0fde3ecee550c98949422e2a}
+      \strng{bibnamehash}{e9bca27c0fde3ecee550c98949422e2a}
+      \strng{authorbibnamehash}{e9bca27c0fde3ecee550c98949422e2a}
+      \strng{authornamehash}{e9bca27c0fde3ecee550c98949422e2a}
+      \strng{authorfullhash}{e9bca27c0fde3ecee550c98949422e2a}
+      \strng{authorfullhashraw}{e9bca27c0fde3ecee550c98949422e2a}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2021 ASEE Virtual Annual Conference Content Access Proceedings}
+      \field{title}{Refining a Taxonomy for Categorizing the Quality of Engineering Student Questions}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.18260/1-2--37649
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.18260/1-2--37649
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.18260/1-2--37649
+      \endverb
+    \endentry
     \entry{grootendorst2022bertopic}{misc}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=a07dee61406b9c48310bff46188c983b}{%

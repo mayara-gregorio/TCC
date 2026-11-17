@@ -154,7 +154,7 @@
             \raggedleft
             \justifying
             
-            \noindent Orientador: Prof. (a). Dr. Marcos Borges
+            \noindent Orientador: Prof. Dr. Marcos Vinicius de Freitas Borges
                 
         \end{spacing}
     \end{minipage} 
@@ -181,8 +181,13 @@
 }
 
 %--------------------Nome do Componente da Banca Examinadora-------------------
-\newcommand{\componenteBancaExaminadora}{ 
+\newcommand{\marcosViniciusDeFreitasBorges}{ 
     \textbf{Prof. Dr. Marcos Vinicius de Freitas Borges} (Orientador)
+}
+
+%--------------------Nome do Componente da Banca Examinadora-------------------
+\newcommand{\componenteBancaExaminadora}{
+    \textbf{Prof. Dr. Membro da Banca}
 }
 
 %----------------------------Títulação do Componete----------------------------
@@ -353,7 +358,7 @@
 \newcommand{\telachat}{
     \begin{figure}[H]
         \centering
-        \caption{Chat do aluno com a pergunta enviada e a resposta com indicação das fontes}
+        \caption{\textit{Chat} do aluno com a pergunta e a resposta com indicação das fontes}
         \vspace{0.1cm}
         \includegraphics[width=\textwidth]{IMAGENS/tela_chat_pergunta_resposta.png}
         \label{fig:tela-chat}
@@ -367,7 +372,7 @@
 \newcommand{\telapainel}{
     \begin{figure}[H]
         \centering
-        \caption{Painel do professor com os tópicos com mais dúvidas e a distribuição das dúvidas}
+        \caption{Painel do professor com os tópicos com distribuição das dúvidas}
         \vspace{0.1cm}
         \includegraphics[width=\textwidth]{IMAGENS/tela_painel_professor.png}
         \label{fig:tela-painel}
@@ -421,20 +426,83 @@
     \end{figure}
 }
 
-%----------------------------Lista de Tabelas--------------------------------
-\newcommand{\TextoListaDeTabelas}{
-    %\noindent Tabela 1 -- Nome da tabela \dotfill n° página \par
-    
+%----------------------------Images BPMN--------------------------------
+
+\newcommand{\bpmnPreparacao}{
+    \begin{figure}[H]
+        \centering
+        \caption{Fluxo BPMN de preparação da disciplina}
+        \vspace{0.1cm}
+        \includegraphics[width=\textwidth]{IMAGENS/preparacao_disciplina.png}
+        \label{fig:bpmn-preparacao}
+        \vspace{-0.2cm}
+        {\fontsize{10pt}{12pt}\selectfont
+        \caption*{Fonte: Elaborado pela autora (2026).} % Legenda de baixo.
+        }
+    \end{figure}
 }
 
-%----------------------------Lista de Quadros--------------------------------
-\newcommand{\TextoListaDeQuadros}{
-    %\noindent Quadro 1 -- Nome do quadro \dotfill n° página \par
-    
+\newcommand{\bpmnDuvidas}{
+    \begin{figure}[H]
+        \centering
+        \caption{Fluxo BPMN de envio e processamento de dúvidas}
+        \vspace{0.1cm}
+        \includegraphics[width=\textwidth]{IMAGENS/envio_processamento_duvida.png}
+        \label{fig:bpmn-duvidas}
+        \vspace{-0.2cm}
+        {\fontsize{10pt}{12pt}\selectfont
+        \caption*{Fonte: Elaborado pela autora (2026).} % Legenda de baixo.
+        }
+    \end{figure}
 }
+
+\newcommand{\bpmnPainel}{
+    \begin{figure}[H]
+        \centering
+        \caption{Fluxo BPMN de consulta ao painel do docente}
+        \vspace{0.1cm}
+        \includegraphics[width=\textwidth]{IMAGENS/consulta_painel_docente.png}
+        \label{fig:bpmn-painel}
+        \vspace{-0.2cm}
+        {\fontsize{10pt}{12pt}\selectfont
+        \caption*{Fonte: Elaborado pela autora (2026).} % Legenda de baixo.
+        }
+    \end{figure}
+}
+
+%----------------------------Lista de Tabelas--------------------------------
+
+\newcommand{\TextoListaDeTabelas}{
+    \noindent Tabela 1 -- Distribuição das perguntas por tópico no conjunto de referência \dotfill 32 \par
+    \noindent Tabela 2 -- Distribuição dos materiais didáticos por tópico \dotfill 34 \par
+    \noindent Tabela 3 -- Desempenho da classificação por tópico \dotfill 46 \par
+}
+
+
+%----------------------------Lista de Quadros--------------------------------
+
+\newcommand{\TextoListaDeQuadros}{
+    \noindent Quadro 1 -- Requisitos funcionais \dotfill 30 \par
+    \noindent Quadro 2 -- Requisitos não funcionais \dotfill 31 \par
+    \noindent Quadro 3 -- Atendimento aos Requisitos \dotfill 44 \par
+    \noindent Quadro 4 -- Configuração do ambiente experimental \dotfill 45 \par
+    \noindent Quadro 5 -- Exemplos de divergências na classificação das perguntas \dotfill 49 \par
+}
+
 %----------------------------Lista de Ilustrações-------------------------------
-\newcommand{\TextoListaDeIlustracoes}{ 
-    %\noindent Figura 1 -- Nome da tabela \dotfill n° página \par
+    
+\newcommand{\TextoListaDeIlustracoes}{
+    \noindent Figura 1 -- Fluxo BPMN de preparação da disciplina \dotfill 36 \par
+    \noindent Figura 2 -- Fluxo BPMN de envio e processamento de dúvidas \dotfill 36 \par
+    \noindent Figura 3 -- Fluxo BPMN de consulta ao painel do docente \dotfill 37 \par
+    \noindent Figura 4 -- Telas de acesso à plataforma \dotfill 37 \par
+    \noindent Figura 5 -- Página da disciplina com os códigos de convite \dotfill 38 \par
+    \noindent Figura 6 -- Página de detalhes do tópico da disciplina \dotfill 39 \par
+    \noindent Figura 7 -- \textit{Chat} do aluno com a pergunta e a resposta com indicação das fontes \dotfill 40 \par
+    \noindent Figura 8 -- Painel do professor com os tópicos com a distribuição das dúvidas \dotfill 41 \par
+    \noindent Figura 9 -- Página do tópico Pilhas com os resumos das dúvidas \dotfill 42 \par
+    \noindent Figura 10 -- Página do tópico Pilhas com os trechos recuperados \dotfill 43 \par
+    \noindent Figura 11 -- Matriz de confusão \dotfill 47 \par
 }
 
 %-----------------------------Lista de Símbolos--------------------------------
@@ -450,31 +518,31 @@
 \newcommand{\TextoListaDeAbreviaturas}{
     \novoBlocoPreTextual{
         \noindent
-        ACM \hspace{1cm} Association for Computing Machinery \\
-        API \hspace{1cm} Application Programming Interface \\
+        ACM \hspace{1cm} Associação para Máquinas de Computação (\textit{Association for Computing Machinery}) \\
+        API \hspace{1cm} Interface de Programação de Aplicações (\textit{Application Programming Interface}) \\
         AVL \hspace{1cm} Adelson-Velsky e Landis \\
-        BERT \hspace{1cm} Bidirectional Encoder Representations from Transformers \\
-        BPMN \hspace{1cm} Business Process Model and Notation \\
+        BERT \hspace{1cm} Representações de Codificadores Bidirecionais de Transformadores (\textit{Bidirectional Encoder Representations from Transformers}) \\
+        BPMN \hspace{1cm} Modelo e Notação de Processos de Negócio (\textit{Business Process Model and Notation}) \\
         CAPES \hspace{1cm} Coordenação de Aperfeiçoamento de Pessoal de Nível Superior \\
-        GGUF \hspace{1cm} GPT-Generated Unified Format \\
-        GPU \hspace{1cm} Graphics Processing Unit \\
-        GPT \hspace{1cm} Generative Pre-trained Transformer \\
+        GGUF \hspace{1cm} Formato Unificado Gerado por GPT (\textit{GPT-Generated Unified Format}) \\
+        GPU \hspace{1cm} Unidade de Processamento Gráfico (\textit{Graphics Processing Unit}) \\
+        GPT \hspace{1cm} Transformador Generativo Pré-Treinado (\textit{Generative Pre-trained Transformer}) \\
         IA \hspace{1cm} Inteligência Artificial \\
-        IEEE \hspace{1cm} Institute of Electrical and Electronics Engineers \\
+        IEEE \hspace{1cm} Instituto de Engenheiros Eletricistas e Eletrônicos (\textit{Institute of Electrical and Electronics Engineers}) \\
         IFMA \hspace{1cm} Instituto Federal de Educação, Ciência e Tecnologia do Maranhão \\
         LGPD \hspace{1cm} Lei Geral de Proteção de Dados Pessoais \\
-        LLM \hspace{1cm} Large Language Model \\
-        LTS \hspace{1cm} Long-Term Support \\
+        LLM \hspace{1cm} Modelo de Linguagem de Grande Escala (\textit{Large Language Model}) \\
+        LTS \hspace{1cm} Suporte de Longo Prazo (\textit{Long-Term Support}) \\
         MDC \hspace{1cm} Máximo Divisor Comum \\
-        PDF \hspace{1cm} Portable Document Format \\
-        RAG \hspace{1cm} Retrieval-Augmented Generation \\
-        RAM \hspace{1cm} Random Access Memory \\
+        PDF \hspace{1cm} Formato Portátil de Documento (\textit{Portable Document Format}) \\
+        RAG \hspace{1cm} Geração Aumentada por Recuperação (\textit{Retrieval-Augmented Generation}) \\
+        RAM \hspace{1cm} Memória de Acesso Aleatório (\textit{Random Access Memory}) \\
         RF \hspace{1cm} Requisito Funcional \\
-        RLS \hspace{1cm} Row-Level Security \\
+        RLS \hspace{1cm} Segurança em Nível de Linha (\textit{Row-Level Security}) \\
         RNF \hspace{1cm} Requisito Não Funcional \\
         SBC \hspace{1cm} Sociedade Brasileira de Computação \\
         TCC \hspace{1cm} Trabalho de Conclusão de Curso \\
-        TF-IDF \hspace{1cm} Term Frequency--Inverse Document Frequency
+        TF-IDF \hspace{1cm} Frequência do Termo--Inverso da Frequência nos Documentos (\textit{Term Frequency--Inverse Document Frequency}) \\
     }
 }
 
@@ -544,7 +612,10 @@
 
     \textbf{Similaridade de cosseno} - Medida matemática utilizada para comparar a orientação de dois vetores, frequentemente aplicada à identificação de similaridade entre representações textuais.
 
+    \textbf{Vetores} - Representações numéricas de dados em um espaço de múltiplas dimensões.
+
     \textbf{Zero-shot} - Abordagem na qual um modelo executa uma tarefa sem receber exemplos específicos de treinamento para aquela tarefa, utilizando apenas as instruções e informações fornecidas.
+
 }
 
 %--------------------------------Anexo(s)--------------------------------------
@@ -701,10 +772,6 @@
         
         \vspace{-1.5cm}
         
-        \begin{flushright}
-            \coorientador
-        \end{flushright}
-        
         \vfill
 
         \begin{center}
@@ -775,11 +842,31 @@
         \end{center}
 
         \begin{center}
+            \marcosViniciusDeFreitasBorges
+        \end{center}
+
+        \begin{center}
+            \instituicaoPertencente
+        \end{center}
+
+        \begin{center}
+            \assinaturaorientador
+        \end{center}
+
+        \begin{center}
             \componenteBancaExaminadora
         \end{center}
 
         \begin{center}
-            \titulacaoComponente
+            \instituicaoPertencente
+        \end{center}
+
+        \begin{center}
+            \assinaturaorientador
+        \end{center}
+
+        \begin{center}
+            \componenteBancaExaminadora
         \end{center}
 
         \begin{center}
@@ -825,7 +912,6 @@
         \vspace{-0.3cm}
          \novoBlocoPreTextual{
             \TextoListaDeIlustracoes
-            \listoffigures
         }
     }
 %----------------------------------------------------------------------------%
@@ -836,7 +922,6 @@
         \vspace{-0.3cm}
         \novoBlocoPreTextual{
             \TextoListaDeTabelas
-            \listoftables
         }
     }
 %----------------------------------------------------------------------------%
@@ -847,7 +932,6 @@
         \vspace{-0.3cm}
         \novoBlocoPreTextual{
             \TextoListaDeQuadros
-            \listofquadros
         }
     }
 %----------------------------------------------------------------------------%
