@@ -268,11 +268,6 @@ INPUT ./resumo.tex
 INPUT ./resumo.tex
 INPUT resumo.tex
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmri12.tfm
-INPUT /usr/share/texmf/tex/latex/lm/ot1lmtt.fd
-INPUT /usr/share/texmf/tex/latex/lm/ot1lmtt.fd
-INPUT /usr/share/texmf/tex/latex/lm/ot1lmtt.fd
-INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmtt12.tfm
-INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc
 INPUT ./abstract.tex
 INPUT ./abstract.tex
 INPUT ./abstract.tex
@@ -320,7 +315,11 @@ INPUT /usr/share/texmf/fonts/tfm/public/lm/lmmi5.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/lmsy10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/lmsy7.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/lmsy5.tfm
+INPUT /usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+INPUT /usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+INPUT /usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmtt10.tfm
+INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc
 INPUT ./resultados.tex
 INPUT ./resultados.tex
 INPUT ./resultados.tex
@@ -394,6 +393,12 @@ INPUT ./conclusao.tex
 INPUT ./conclusao.tex
 INPUT ./conclusao.tex
 INPUT conclusao.tex
+INPUT ./declaracaoia.tex
+INPUT ./declaracaoia.tex
+INPUT ./declaracaoia.tex
+INPUT ./declaracaoia.tex
+INPUT declaracaoia.tex
+INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmtt12.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ts1-lmbx12.tfm
 INPUT main.aux
 INPUT main.run.xml

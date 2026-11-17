@@ -186,8 +186,13 @@
 }
 
 %--------------------Nome do Componente da Banca Examinadora-------------------
-\newcommand{\componenteBancaExaminadora}{
-    \textbf{Prof. Dr. Membro da Banca}
+\newcommand{\diegoSantiagoDeMenesesCarvalho}{
+    \textbf{Prof. Me. Diego Santiago de Meneses Carvalho}
+}
+
+%--------------------Nome do Componente da Banca Examinadora-------------------
+\newcommand{\pedroAlmirMartinsDeOliveira}{
+    \textbf{Prof. Dr. Pedro Almir Martins de Oliveira}
 }
 
 %----------------------------Títulação do Componete----------------------------
@@ -196,8 +201,12 @@
 }
 
 %----------------------Instituição a que Pertence o Componente-----------------
-\newcommand{\instituicaoPertencente}{
+\newcommand{\instituicaoifma}{
     Instituição Federal de Educação, Ciência e Tecnologia (IFMA)
+}
+
+\newcommand{\instituicaoufpi}{
+    Universidade Federal do Piauí (UFPI)
 }
 
 %--------------------------------Dedicatória-----------------------------------
@@ -518,31 +527,30 @@
 \newcommand{\TextoListaDeAbreviaturas}{
     \novoBlocoPreTextual{
         \noindent
-        ACM \hspace{1cm} Associação para Máquinas de Computação (\textit{Association for Computing Machinery}) \\
-        API \hspace{1cm} Interface de Programação de Aplicações (\textit{Application Programming Interface}) \\
+        ACM \hspace{1cm} Associação para Máquinas de Computação \\
+        API \hspace{1cm} Interface de Programação de Aplicações \\
         AVL \hspace{1cm} Adelson-Velsky e Landis \\
-        BERT \hspace{1cm} Representações de Codificadores Bidirecionais de Transformadores (\textit{Bidirectional Encoder Representations from Transformers}) \\
-        BPMN \hspace{1cm} Modelo e Notação de Processos de Negócio (\textit{Business Process Model and Notation}) \\
+        BERT \hspace{1cm} Representações de Codificadores Bidirecionais de Transformadores \\
+        BPMN \hspace{1cm} \textit{Business Process Model and Notation} \\
         CAPES \hspace{1cm} Coordenação de Aperfeiçoamento de Pessoal de Nível Superior \\
-        GGUF \hspace{1cm} Formato Unificado Gerado por GPT (\textit{GPT-Generated Unified Format}) \\
-        GPU \hspace{1cm} Unidade de Processamento Gráfico (\textit{Graphics Processing Unit}) \\
-        GPT \hspace{1cm} Transformador Generativo Pré-Treinado (\textit{Generative Pre-trained Transformer}) \\
-        IA \hspace{1cm} Inteligência Artificial \\
-        IEEE \hspace{1cm} Instituto de Engenheiros Eletricistas e Eletrônicos (\textit{Institute of Electrical and Electronics Engineers}) \\
+        GGUF \hspace{1cm} Formato Unificado Gerado por GPT \\
+        GPU \hspace{1cm} Unidade de Processamento Gráfico \\
+        GPT \hspace{1cm} Transformador Generativo Pré-Treinado \\
+        IEEE \hspace{1cm} Instituto de Engenheiros Eletricistas e Eletrônicos \\
         IFMA \hspace{1cm} Instituto Federal de Educação, Ciência e Tecnologia do Maranhão \\
         LGPD \hspace{1cm} Lei Geral de Proteção de Dados Pessoais \\
-        LLM \hspace{1cm} Modelo de Linguagem de Grande Escala (\textit{Large Language Model}) \\
-        LTS \hspace{1cm} Suporte de Longo Prazo (\textit{Long-Term Support}) \\
+        LLM \hspace{1cm} Modelo de Linguagem de Grande Escala \\
+        LTS \hspace{1cm} Suporte de Longo Prazo \\
         MDC \hspace{1cm} Máximo Divisor Comum \\
-        PDF \hspace{1cm} Formato Portátil de Documento (\textit{Portable Document Format}) \\
-        RAG \hspace{1cm} Geração Aumentada por Recuperação (\textit{Retrieval-Augmented Generation}) \\
-        RAM \hspace{1cm} Memória de Acesso Aleatório (\textit{Random Access Memory}) \\
+        PDF \hspace{1cm} Formato Portátil de Documento \\
+        RAG \hspace{1cm} Geração Aumentada por Recuperação \\
+        RAM \hspace{1cm} Memória de Acesso Aleatório \\
         RF \hspace{1cm} Requisito Funcional \\
-        RLS \hspace{1cm} Segurança em Nível de Linha (\textit{Row-Level Security}) \\
+        RLS \hspace{1cm} Segurança em Nível de Linha \\
         RNF \hspace{1cm} Requisito Não Funcional \\
         SBC \hspace{1cm} Sociedade Brasileira de Computação \\
         TCC \hspace{1cm} Trabalho de Conclusão de Curso \\
-        TF-IDF \hspace{1cm} Frequência do Termo--Inverso da Frequência nos Documentos (\textit{Term Frequency--Inverse Document Frequency}) \\
+        TF-IDF \hspace{1cm} Frequência do Termo--Inverso da Frequência nos Documentos \\
     }
 }
 
@@ -846,7 +854,7 @@
         \end{center}
 
         \begin{center}
-            \instituicaoPertencente
+            \instituicaoifma
         \end{center}
 
         \begin{center}
@@ -854,11 +862,11 @@
         \end{center}
 
         \begin{center}
-            \componenteBancaExaminadora
+            \diegoSantiagoDeMenesesCarvalho
         \end{center}
 
         \begin{center}
-            \instituicaoPertencente
+            \instituicaoifma
         \end{center}
 
         \begin{center}
@@ -866,11 +874,11 @@
         \end{center}
 
         \begin{center}
-            \componenteBancaExaminadora
+            \pedroAlmirMartinsDeOliveira
         \end{center}
 
         \begin{center}
-            \instituicaoPertencente
+            \instituicaoufpi
         \end{center}
     }
 %----------------------------------------------------------------------------%

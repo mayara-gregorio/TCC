@@ -3457,6 +3457,46 @@
       \verb https://doi.org/10.1609/aaai.v39i28.35372
       \endverb
     \endentry
+    \entry{vasques2024guia}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=7bb8b42153722692a55718cca7dd6161}{%
+           family={Vasques},
+           familyi={V\bibinitperiod},
+           given={Daniel\bibnamedelima Giordani},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f6a1cef0a5ba9b1eb43f60b1b53def65}{%
+           family={Oliveira},
+           familyi={O\bibinitperiod},
+           given={Victor\bibnamedelimb Hugo\bibnamedelima Nedel},
+           giveni={V\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Porto Alegre}%
+      }
+      \list{publisher}{1}{%
+        {GPICCE}%
+      }
+      \strng{namehash}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \strng{fullhash}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \strng{fullhashraw}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \strng{bibnamehash}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \strng{authorbibnamehash}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \strng{authornamehash}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \strng{authorfullhash}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \strng{authorfullhashraw}{ef3b4a9be622d4b16dda9a46beb96b94}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-65-01-04046-2}
+      \field{pagetotal}{279}
+      \field{title}{Guia de iniciação científica na escola}
+      \field{year}{2024}
+    \endentry
     \entry{vidal2026inteligencia}{article}{}{}
       \name{author}{7}{}{%
         {{un=0,uniquepart=base,hash=9c15ba7f52e33c1202d0895e29e5dc11}{%

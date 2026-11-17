@@ -1,30 +1,31 @@
 \babel@toc {brazilian}{}\relax 
-\contentsline {section}{\numberline {1}{\fontsize {12pt}{14pt}\selectfont INTRODUÇÃO}}{14}{}%
-\contentsline {section}{\numberline {2}{\fontsize {12pt}{14pt}\selectfont OBJETIVOS}}{16}{}%
-\contentsline {subsection}{\numberline {2.1}{\fontsize {12pt}{14pt}\selectfont Objetivo geral}}{16}{}%
-\contentsline {subsection}{\numberline {2.2}{\fontsize {12pt}{14pt}\selectfont Objetivos específicos}}{16}{}%
-\contentsline {section}{\numberline {3}{\fontsize {12pt}{14pt}\selectfont REFERENCIAL TEÓRICO}}{17}{}%
-\contentsline {subsection}{\numberline {3.1}{\fontsize {12pt}{14pt}\selectfont Dúvidas discentes}}{17}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}{\fontsize {12pt}{14pt}\selectfont Busca de ajuda acadêmica}}{17}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}{\fontsize {12pt}{14pt}\selectfont Subsídios à prática docente}}{18}{}%
-\contentsline {subsection}{\numberline {3.2}{\fontsize {12pt}{14pt}\selectfont \textit {Chatbots}}}{19}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}{\fontsize {12pt}{14pt}\selectfont Função dos \textit {chatbots} no contexto educacional}}{19}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}{\fontsize {12pt}{14pt}\selectfont \textit {Chatbots} no processo de aprendizagem discente}}{20}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}{\fontsize {12pt}{14pt}\selectfont Interações discentes com \textit {chatbots} como subsídios à prática docente}}{21}{}%
-\contentsline {subsection}{\numberline {3.3}{\fontsize {12pt}{14pt}\selectfont Modelos LLM}}{22}{}%
-\contentsline {subsection}{\numberline {3.4}{\fontsize {12pt}{14pt}\selectfont RAG}}{23}{}%
-\contentsline {subsection}{\numberline {3.5}{\fontsize {12pt}{14pt}\selectfont Classificação de dúvidas baseada em material didático docente}}{24}{}%
-\contentsline {subsubsection}{\numberline {3.5.1}{\fontsize {12pt}{14pt}\selectfont Representações vetoriais e recuperação semântica}}{24}{}%
-\contentsline {subsubsection}{\numberline {3.5.2}{\fontsize {12pt}{14pt}\selectfont Classificação textual baseada em LLM}}{26}{}%
-\contentsline {subsection}{\numberline {3.6}{\fontsize {12pt}{14pt}\selectfont Privacidade e proteção de dados}}{27}{}%
-\contentsline {section}{\numberline {4}{\fontsize {12pt}{14pt}\selectfont MÉTODO DA PESQUISA}}{29}{}%
-\contentsline {subsection}{\numberline {4.1}{\fontsize {12pt}{14pt}\selectfont Levantamento de requisitos}}{31}{}%
+\contentsline {section}{\numberline {1}{\fontsize {12pt}{14pt}\selectfont INTRODUÇÃO}}{13}{}%
+\contentsline {section}{\numberline {2}{\fontsize {12pt}{14pt}\selectfont OBJETIVOS}}{15}{}%
+\contentsline {subsection}{\numberline {2.1}{\fontsize {12pt}{14pt}\selectfont Objetivo geral}}{15}{}%
+\contentsline {subsection}{\numberline {2.2}{\fontsize {12pt}{14pt}\selectfont Objetivos específicos}}{15}{}%
+\contentsline {section}{\numberline {3}{\fontsize {12pt}{14pt}\selectfont REFERENCIAL TEÓRICO}}{16}{}%
+\contentsline {subsection}{\numberline {3.1}{\fontsize {12pt}{14pt}\selectfont Dúvidas discentes}}{16}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}{\fontsize {12pt}{14pt}\selectfont Busca de ajuda acadêmica}}{16}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}{\fontsize {12pt}{14pt}\selectfont Subsídios à prática docente}}{17}{}%
+\contentsline {subsection}{\numberline {3.2}{\fontsize {12pt}{14pt}\selectfont \textit {Chatbots}}}{18}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}{\fontsize {12pt}{14pt}\selectfont Função dos \textit {chatbots} no contexto educacional}}{18}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}{\fontsize {12pt}{14pt}\selectfont \textit {Chatbots} no processo de aprendizagem discente}}{19}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}{\fontsize {12pt}{14pt}\selectfont Interações discentes com \textit {chatbots} como subsídios à prática docente}}{20}{}%
+\contentsline {subsection}{\numberline {3.3}{\fontsize {12pt}{14pt}\selectfont Modelos LLM}}{21}{}%
+\contentsline {subsection}{\numberline {3.4}{\fontsize {12pt}{14pt}\selectfont RAG}}{22}{}%
+\contentsline {subsection}{\numberline {3.5}{\fontsize {12pt}{14pt}\selectfont Classificação de dúvidas baseada em material didático docente}}{23}{}%
+\contentsline {subsubsection}{\numberline {3.5.1}{\fontsize {12pt}{14pt}\selectfont Representações vetoriais e recuperação semântica}}{23}{}%
+\contentsline {subsubsection}{\numberline {3.5.2}{\fontsize {12pt}{14pt}\selectfont Classificação textual baseada em LLM}}{25}{}%
+\contentsline {subsection}{\numberline {3.6}{\fontsize {12pt}{14pt}\selectfont Privacidade e proteção de dados}}{26}{}%
+\contentsline {section}{\numberline {4}{\fontsize {12pt}{14pt}\selectfont MÉTODO DA PESQUISA}}{28}{}%
+\contentsline {subsection}{\numberline {4.1}{\fontsize {12pt}{14pt}\selectfont Levantamento de requisitos}}{30}{}%
 \contentsline {subsection}{\numberline {4.2}{\fontsize {12pt}{14pt}\selectfont Avaliação experimental}}{32}{}%
 \contentsline {subsubsection}{\numberline {4.2.1}{\fontsize {12pt}{14pt}\selectfont Conjunto de dados de referência}}{32}{}%
 \contentsline {subsubsection}{\numberline {4.2.2}{\fontsize {12pt}{14pt}\selectfont Preparação da disciplina na plataforma}}{34}{}%
 \contentsline {subsubsection}{\numberline {4.2.3}{\fontsize {12pt}{14pt}\selectfont Execução da classificação}}{35}{}%
 \contentsline {subsubsection}{\numberline {4.2.4}{\fontsize {12pt}{14pt}\selectfont Métricas e análises de erros}}{36}{}%
 \contentsline {subsubsection}{\numberline {4.2.5}{\fontsize {12pt}{14pt}\selectfont Aspectos éticos}}{37}{}%
+\contentsline {subsection}{\numberline {4.3}{\fontsize {12pt}{14pt}\selectfont Uso de inteligência artificial generativa}}{37}{}%
 \contentsline {section}{\numberline {5}{\fontsize {12pt}{14pt}\selectfont RESULTADOS}}{38}{}%
 \contentsline {subsection}{\numberline {5.1}{\fontsize {12pt}{14pt}\selectfont A plataforma desenvolvida}}{38}{}%
 \contentsline {subsection}{\numberline {5.2}{\fontsize {12pt}{14pt}\selectfont Execução do experimento}}{46}{}%
@@ -32,7 +33,7 @@
 \contentsline {subsection}{\numberline {5.4}{\fontsize {12pt}{14pt}\selectfont Análise dos erros}}{49}{}%
 \contentsline {subsection}{\numberline {5.5}{\fontsize {12pt}{14pt}\selectfont Discussão e limitações}}{52}{}%
 \contentsline {section}{\numberline {6}{\fontsize {12pt}{14pt}\selectfont CONCLUSÃO}}{54}{}%
-\contentsline {section}{\numberline {}{\textbf {REFERÊNCIAS}}}{57}{}%
+\contentsline {section}{\numberline {}{\textbf {REFERÊNCIAS}}}{58}{}%
 \babel@toc {brazilian}{}\relax 
 \babel@toc {brazilian}{}\relax 
 \babel@toc {brazilian}{}\relax 
@@ -281,5 +282,5 @@
 \babel@toc {brazilian}{}\relax 
 \babel@toc {brazilian}{}\relax 
 \babel@toc {brazilian}{}\relax 
-\contentsline {section}{\numberline {}{\textbf {GLOSSÁRIO}}}{65}{}%
+\contentsline {section}{\numberline {}{\textbf {GLOSSÁRIO}}}{66}{}%
 \contentsfinish 

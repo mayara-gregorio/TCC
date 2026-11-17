@@ -212,13 +212,13 @@ Sistema operacional &
 Ubuntu 26.04.1 LTS, 64 bits \\ \hline
 
 LLM &
-\textit{Qwen2.5-7B-Instruct}, quantizada em \texttt{q4\_k\_m} (formato GGUF), executada pelo \textit{llama.cpp} na placa de vídeo \\ \hline
+\textit{Qwen2.5-7B-Instruct}, quantizada em \textit{q4\_k\_m} (formato GGUF), executada pelo \textit{llama.cpp} na placa de vídeo \\ \hline
 
 Temperatura da LLM &
 0,2 \\ \hline
 
 Modelo de \textit{embeddings} &
-\texttt{intfloat/multilingual-e5-base} (768 dimensões), executado no processador por um serviço local em Python, com \textit{FastAPI} e \textit{sentence-transformers} \\ \hline
+\textit{intfloat/multilingual-e5-base} (768 dimensões), executado no processador por um serviço local em Python, com \textit{FastAPI} e \textit{sentence-transformers} \\ \hline
 
 Banco de dados &
 \textit{Supabase}, em nuvem (\textit{PostgreSQL} com a extensão \textit{pgvector}) \\ \hline
@@ -241,7 +241,8 @@ Envio automatizado &
 \FloatBarrier
 
 \novoBlocoTexto{
-    Ao final da execução, os registros das perguntas foram exportados do banco de dados, com o tópico atribuído pela LLM, e comparados aos tópicos de referência em planilha eletrônica. A planilha com as 1.416 perguntas traduzidas, o tópico de referência e o tópico atribuído pela plataforma está disponível no \textit{Google Drive}\footnote{Disponível em: \url{https://docs.google.com/spreadsheets/d/12FplYIpg0O_vLE_PhnKJ0lyG4CDuXaGG/edit?usp=sharing}.}, serviço de armazenamento de arquivos em nuvem do Google.
+    Ao final da execução, os registros das perguntas foram exportados do banco de dados, com o tópico atribuído pela LLM, e comparados aos tópicos de referência em planilha eletrônica. A planilha com as 1.416 perguntas traduzidas, o tópico de referência e o tópico atribuído pela plataforma está disponível no \textit{Google Drive}%
+    \footnote{Disponível em: \url{https://docs.google.com/spreadsheets/d/12FplYIpg0O_vLE_PhnKJ0lyG4CDuXaGG/edit?usp=sharing}.}, serviço de armazenamento de arquivos em nuvem do Google.
 }
 
 \subsection{{\fontsize{12pt}{14pt}\selectfont Desempenho da classificação}}
@@ -352,7 +353,7 @@ Grafo & 139 & 148 & 133 & 89,86 & 95,68 & 92,68 \\ \hline
 }
 
 \novoBlocoTexto{
-    A leitura das perguntas do conjunto aponta três causas prováveis. A primeira é a divisão diferente dos tópicos. No conjunto, Revisão de Python reúne perguntas sobre recursos da linguagem, e 58 das suas 295 perguntas citam listas, vetores (\textit{arrays}), matrizes ou tuplas. No material da disciplina, as listas do Python são o conteúdo do tópico Listas, para o qual a plataforma levou 63 perguntas de Revisão de Python, 39 delas entre essas 58. As outras 24 tratam de outros recursos da linguagem, como laços de repetição, tipos mutáveis e imutáveis, cadeias de caracteres (\textit{strings}) e dicionários, e parte desses assuntos também aparece no material de Listas, que apresenta a lista como sequência mutável e percorre os seus elementos com a função \texttt{enumerate}.
+    A leitura das perguntas do conjunto aponta três causas prováveis. A primeira é a divisão diferente dos tópicos. No conjunto, Revisão de Python reúne perguntas sobre recursos da linguagem, e 58 das suas 295 perguntas citam listas, vetores (\textit{arrays}), matrizes ou tuplas. No material da disciplina, as listas do Python são o conteúdo do tópico Listas, para o qual a plataforma levou 63 perguntas de Revisão de Python, 39 delas entre essas 58. As outras 24 tratam de outros recursos da linguagem, como laços de repetição, tipos mutáveis e imutáveis, cadeias de caracteres (\textit{strings}) e dicionários, e parte desses assuntos também aparece no material de Listas, que apresenta a lista como sequência mutável e percorre os seus elementos com a função \textit{enumerate}.
 }
 
 \novoBlocoTexto{
